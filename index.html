@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>ChihChi — AI Engineer</title>
+<title>ChihChi Kuo — AI Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -210,12 +210,34 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
   .proj{grid-template-columns:2rem 1fr;}
   .plink{display:none;}
   nav ul{display:none;}
+  body{padding-bottom:52px;}
+  #mob-nav{display:flex;}
 }
 @media(max-width:600px){
   .hstats{flex-direction:column;}
   .hstat{border-right:none;border-bottom:1px solid var(--border);}
   .hstat:last-child{border-bottom:none;}
+  .sec{padding:3rem 4%;}
+  .hero{padding:6rem 4% 3rem;}
+  .wbody{padding:1.5rem 1.25rem 1.5rem;}
+  .feat-body{padding:1rem 1.25rem;}
+  .sec-h{margin-bottom:1.5rem;}
+  .cb-body{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  footer{flex-direction:column;gap:.4rem;text-align:center;padding:.9rem 4%;}
 }
+
+/* Touch devices: disable custom cursor */
+@media(pointer:coarse){
+  body{cursor:auto;}
+  .cur{display:none;}
+  .video-launch,.demo-shot{cursor:pointer;}
+}
+
+/* Mobile bottom nav */
+#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--bg);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom,0px);}
+.mob-nav-inner{display:flex;justify-content:space-around;}
+#mob-nav a{display:block;color:var(--muted);text-decoration:none;font-size:10px;letter-spacing:.06em;padding:11px 10px;text-align:center;transition:color .15s;white-space:nowrap;}
+#mob-nav a:active{color:var(--green);}
 </style>
 <script type="application/ld+json">
 {
@@ -248,7 +270,7 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
 <nav>
   <div class="nav-left">
     <div class="ndots"><div class="nd nd1"></div><div class="nd nd2"></div><div class="nd nd3"></div></div>
-    <span class="nav-title"><em>chihchi</em>@portfolio:~</span>
+    <span class="nav-title"><em>chihchi Kuo</em>@portfolio:~</span>
   </div>
   <ul>
     <li><a href="#about">about</a></li>
@@ -287,7 +309,7 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
 <!-- ABOUT -->
 <section id="about" class="sec sec-alt">
   <div class="sec-cmt"><span>##</span> 01 — about.py</div>
-  <h2 class="sec-h">Who is ChihChi?</h2>
+  <h2 class="sec-h">Who is ChihChi Kuo?</h2>
   <div class="about-grid">
     <div>
       <div class="codeblock">
@@ -610,5 +632,15 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
+
+<nav id="mob-nav" aria-label="Mobile navigation">
+  <div class="mob-nav-inner">
+    <a href="#about">about</a>
+    <a href="#projects">work</a>
+    <a href="#voice-agent">demo</a>
+    <a href="#publications">pub</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
 </body>
 </html>
