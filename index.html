@@ -127,6 +127,7 @@ nav ul a:hover{color:var(--green);background:rgba(63,185,80,0.06);}
 .proj:first-child{border-top:1px solid var(--border);}
 .proj::before{content:'';position:absolute;left:-5%;right:-5%;top:0;bottom:0;background:rgba(63,185,80,0.04);opacity:0;transition:opacity 0.12s;}
 .proj:hover::before{opacity:1;}
+[data-proj]{cursor:pointer;}
 .proj > *{position:relative;}
 .pidx{color:var(--prompt);font-size:12px;padding-top:2px;}
 .pname{font-size:15px;font-weight:500;color:var(--white);margin-bottom:4px;}
@@ -150,7 +151,7 @@ nav ul a:hover{color:var(--green);background:rgba(63,185,80,0.06);}
 
 .video-launch{position:relative;display:flex;align-items:center;justify-content:center;min-height:260px;background:linear-gradient(135deg,rgba(63,185,80,0.08),rgba(88,166,255,0.08)),var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 0 30px rgba(63,185,80,0.07);cursor:pointer;}
 .video-launch::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(63,185,80,0.14),transparent 55%);opacity:.8;}
-.video-launch-inner{position:relative;text-align:center;padding:2rem;}
+.video-launch-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
 .play-btn{width:72px;height:72px;border-radius:50%;border:1px solid var(--green);background:rgba(63,185,80,0.12);color:var(--green);font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;transition:transform .15s,background .15s;}
 .video-launch:hover .play-btn{transform:scale(1.06);background:rgba(63,185,80,0.2);}
 .video-title{font-size:16px;color:var(--white);margin-bottom:4px;}
@@ -176,10 +177,26 @@ nav ul a:hover{color:var(--green);background:rgba(63,185,80,0.06);}
 .modal-img-card{width:min(1200px,94vw);max-height:92vh;background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.45);}
 .modal-img-wrap{max-height:calc(92vh - 44px);overflow:auto;background:var(--bg);}
 .modal-img-wrap img{width:100%;display:block;}
+#imageModal,#videoModal{z-index:3000;}
+.proj-modal{width:min(760px,94vw);max-height:88vh;background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.45);display:flex;flex-direction:column;}
+.proj-modal-body{overflow-y:auto;padding:2rem 2.5rem 2.5rem;flex:1;}
+.pm-section{margin-bottom:1.8rem;}
+.pm-label{font-size:10px;color:var(--prompt);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
+.pm-body{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;}
+.pm-metrics{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.pm-metric{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px 16px;}
+.pm-metric-v{font-size:1.4rem;font-weight:600;color:var(--green);line-height:1;}
+.pm-metric-l{font-size:11px;color:var(--prompt);margin-top:3px;}
+.pm-links{display:flex;gap:.75rem;flex-wrap:wrap;}
+.pm-link{font-size:12px;color:var(--blue);border:1px solid rgba(88,166,255,.25);padding:5px 14px;border-radius:3px;text-decoration:none;}
+.pm-link:hover{background:rgba(88,166,255,.08);}
+.pm-placeholder{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--prompt);border-left:2px solid var(--border);padding-left:.8rem;}
+.pm-images{display:flex;flex-direction:column;gap:.75rem;}
+.pm-images img{width:100%;display:block;border-radius:4px;border:1px solid var(--border);cursor:zoom-in;transition:opacity .15s;}
+.pm-images img:hover{opacity:.88;}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
-.cform{background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}.cform{background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
 .cf-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);}
 .cf-body{padding:1.5rem;}
 .field{margin-bottom:1.1rem;}
@@ -376,7 +393,7 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
       <span class="fl">★ FEATURED WORK</span>
       <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank">→ LinkedIn Profile</a>
     </div>
-    <div class="feat-body">
+    <div class="feat-body" role="button" tabindex="0" data-proj="5">
       <div>
         <h3 class="feat-title">Insurance Product AI Agent <span class="ptag">Agent</span></h3>
         <p class="feat-desc">Collaborated with a multi-developer team on a proof-of-concept AI assistant for insurance policy clauses. Built a knowledge-retrieval-driven Q&amp;A workflow and optimized retrieval strategy to improve recall while keeping latency stable.</p>
@@ -394,31 +411,31 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
   </div>
 
   <div class="proj-list">
-    <a href="#voice-agent" class="proj">
+    <div role="button" tabindex="0" class="proj" data-proj="0">
       <div class="pidx">01</div>
       <div><div class="pname">AI Voice Agent <span class="ptag">Agent</span></div><div class="pdesc">Led development of a voice agent MVP for premium-related inbound calls using OpenAI Realtime model concepts. Designed dialogue flow, state-flow controls, and quality metrics for response quality, task completion, and interaction experience. Includes a live demo video below.</div><div class="tags"><span class="stag">OpenAI Realtime Model</span><span class="stag">Voice Agent</span><span class="stag">Tool Calling</span><span class="stag">WebSocket</span></div></div>
       <div class="plink">16.4%&ensp;→&ensp;8.6%</div>
-    </a>
-    <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" class="proj">
+    </div>
+    <div role="button" tabindex="0" class="proj" data-proj="1">
       <div class="pidx">02</div>
       <div><div class="pname">Internal LLM Coding Assistant <span class="ptag">Deploy</span></div><div class="pdesc">Built an internal large language model service with a VS Code extension to provide GitHub Copilot-like assistance for IT teams while reducing risks around sensitive data and personal information leakage.</div><div class="tags"><span class="stag">LLM Deployment</span><span class="stag">Self Hosted AI</span><span class="stag">HuggingFace</span></div></div>
-      <div class="plink">→ LinkedIn</div>
-    </a>
-    <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" class="proj">
+      <div class="plink">→ details</div>
+    </div>
+    <div role="button" tabindex="0" class="proj" data-proj="2">
       <div class="pidx">03</div>
       <div><div class="pname">OCR Key Information Extraction <span class="ptag">CV</span></div><div class="pdesc">Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.</div><div class="tags"><span class="stag">OCR</span><span class="stag">Computer Vision</span><span class="stag">Model Optimization</span><span class="stag">PaddleOCR</span></div></div>
       <div class="plink">81%&ensp;→&ensp;93%</div>
-    </a>
-    <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" class="proj">
+    </div>
+    <div role="button" tabindex="0" class="proj" data-proj="3">
       <div class="pidx">04</div>
       <div><div class="pname">AIOps &amp; Time-Series Anomaly Detection <span class="ptag">MLOps</span></div><div class="pdesc">Developed anomaly detection algorithms for life-insurance core system server metrics, cement plants, and battery factory scenarios, including algorithms that alerted operators 20 minutes earlier than existing rules of thumb.</div><div class="tags"><span class="stag">AIOps</span><span class="stag">Time Series</span><span class="stag">Anomaly Detection</span><span class="stag">Preventive Maintenance</span></div></div>
       <div class="plink">20 min earlier</div>
-    </a>
-    <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" class="proj">
+    </div>
+    <div role="button" tabindex="0" class="proj" data-proj="4">
       <div class="pidx">05</div>
       <div><div class="pname">Production ML API Deployment <span class="ptag">Deploy</span></div><div class="pdesc">Designed ML model systems including code structure, Docker containerization, deployment workflow, automated monitoring, and information visualization. Deployed 10+ real-time and batch ML models as APIs for internal systems.</div><div class="tags"><span class="stag">Docker</span><span class="stag">Flask API</span><span class="stag">Monitoring</span></div></div>
       <div class="plink">10+ models</div>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -430,7 +447,7 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
     <div>
       <div class="vmeta">
         <div class="vmi"><div class="vmi-l">// project</div><div class="vmi-v g">Premium-related Inbound Call Voice Agent</div></div>
-        <div class="vmi"><div class="vmi-l">// architecture</div><div class="vmi-v">OpenAI Realtime API · tool calling · state-machine flow · LLM-as-a-judge</div></div>
+        <div class="vmi"><div class="vmi-l">// architecture</div><div class="vmi-v">OpenAI Realtime API · tool calling · state-machine flow · LLM as a judge</div></div>
         <div class="vmi"><div class="vmi-l">// result</div><div class="vmi-v">Unstable dialogue cases reduced from 16.4% to 8.6%</div></div>
         <div class="vmi"><div class="vmi-l">// description</div><div class="vmi-v sm">A practical voice-agent MVP for premium-related service scenarios, redesigned from prompt-only behavior into a modular Voice Agent + Tool Calling system. The flow uses guardrails, conversation-state tools, intent identification, follow-up classification, and post-session scoring.</div></div>
       </div>
@@ -453,12 +470,12 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
   </div>
 
   <div class="demo-gallery">
-    <button class="demo-shot" type="button" data-img="images/demo-1.png" data-title="Voice Agent Architecture">
-      <img src="images/demo-1.png" alt="Voice Agent architecture with guardrails, tools, and LLM-as-a-judge scoring">
+    <button class="demo-shot" type="button" data-img="images/voice-agent-1.png" data-title="Voice Agent Architecture">
+      <img src="images/voice-agent-1.png" alt="Voice Agent architecture with guardrails, tools, and LLM-as-a-judge scoring">
       <div class="demo-cap"><strong>Architecture:</strong> Realtime voice agent with text guardrails, tools, and post-session scoring.</div>
     </button>
-    <button class="demo-shot" type="button" data-img="images/demo-2.png" data-title="Voice Agent Refactor Result">
-      <img src="images/demo-2.png" alt="Voice Agent refactor direction and error-rate change analysis">
+    <button class="demo-shot" type="button" data-img="images/voice-agent-2.png" data-title="Voice Agent Refactor Result">
+      <img src="images/voice-agent-2.png" alt="Voice Agent refactor direction and error-rate change analysis">
       <div class="demo-cap"><strong>Refactor result:</strong> Prompt-based flow evolved into modular tool calling with measurable error-rate reduction.</div>
     </button>
   </div>
@@ -484,6 +501,16 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
       <button class="modal-close" type="button" id="closeImage" aria-label="Close image">×</button>
     </div>
     <div class="modal-img-wrap"><img id="modalImage" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="modal" id="projModal" aria-hidden="true">
+  <div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
+    <div class="modal-bar">
+      <div class="modal-title" id="projModalTitle">project_detail</div>
+      <button class="modal-close" type="button" id="closeProjModal" aria-label="Close">×</button>
+    </div>
+    <div class="proj-modal-body" id="projModalBody"></div>
   </div>
 </div>
 
@@ -633,8 +660,224 @@ document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
     closeVideoModal();
     closeImageModal();
+    closeProjModalFn();
   }
 });
+
+const PROJECTS = [
+  {
+    idx: '01', title: 'AI Voice Agent', tag: 'Agent',
+    overview: 'I led the development of an AI Voice Agent MVP for insurance customer-service scenarios, focusing on inbound premium-related calls. The goal was not to build a chatbot that freely answers insurance questions — in a regulated customer-service environment, the agent must first clarify the customer\'s intent, avoid unsupported claims, and route the conversation to the correct service flow.',
+    approach: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Core Challenges</div>
+  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--white);font-weight:400">Customers describe issues vaguely</strong> — Real callers often use non-standard wording, incomplete sentences, or multiple intents in one request.</div>
+  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--white);font-weight:400">Voice agents must control risk</strong> — The agent cannot ask for sensitive information, leak system behavior, mention competitors inappropriately, or make unsupported commitments.</div>
+  <div><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--white);font-weight:400">Dialogue quality must be measurable</strong> — The team needed a way to evaluate task completion, flow stability, empathy, and customer experience beyond whether the agent simply replies.</div>
+</div>
+<div style="margin-bottom:1.1rem">
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Key Design Decisions</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+    <li>OpenAI Realtime API for low-latency speech interaction</li>
+    <li>State machine to manage six dialogue stages</li>
+    <li>Text-based LLM tool call for intent recognition (better accuracy than inline prompt)</li>
+    <li>Tool calling for conversation-state updates and follow-up classification</li>
+    <li>PII masking and layered guardrails on both customer input and AI output</li>
+    <li>LLM-as-a-judge scoring agent after each session</li>
+  </ul>
+</div>
+<div style="margin-bottom:1.1rem">
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Guardrail Layers</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+    <li>Customer transcript checks for sensitive / PII information</li>
+    <li>Prompt-level topic and behavior control</li>
+    <li>AI response transcript checks via regex + LLM semantic judgment</li>
+    <li>Real-time interruption and response rewriting when risky output is detected</li>
+  </ul>
+  <div style="margin-top:.65rem">L2 output guard evaluated across five risk categories — Privacy, Security, Safety, Compliance, Brand — achieving a 100% pass rate on a 300-case test set.</div>
+</div>
+<div>
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Per-call Evaluation Metrics</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+    <li>Conversation naturalness &amp; empathy</li>
+    <li>Task completion &amp; intent-identification accuracy</li>
+    <li>Role-boundary control &amp; topic consistency</li>
+    <li>Customer satisfaction &amp; engagement</li>
+  </ul>
+</div>`,
+    metrics: [
+      { v: '8.6%', l: '// unstable dialogue rate (↓ from 16.4%)' },
+      { v: '100%', l: '// L2 guardrail pass rate · 300 cases' }
+    ],
+    stack: ['OpenAI Realtime API', 'State Machine', 'Tool Calling', 'Guardrails', 'LLM as a judge', 'WebSocket'],
+    links: [
+      { label: '→ Live Demo', href: '#voice-agent', internal: true }
+    ]
+  },
+  {
+    idx: '02', title: 'Internal LLM Coding Assistant', tag: 'Deploy',
+    overview: 'Built an internal large language model service with a VS Code extension to provide GitHub Copilot-like assistance for IT teams while reducing risks around sensitive data and personal information leakage.',
+    approach: null,
+    metrics: [],
+    stack: ['LLM Deployment', 'Self Hosted AI', 'HuggingFace'],
+    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+  },
+  {
+    idx: '03', title: 'OCR Key Information Extraction', tag: 'CV',
+    overview: 'Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.',
+    approach: null,
+    metrics: [
+      { v: '93%', l: '// model accuracy (↑ from 81%)' }
+    ],
+    stack: ['OCR', 'Computer Vision', 'Model Optimization', 'PaddleOCR'],
+    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+  },
+  {
+    idx: '04', title: 'AIOps & Time-Series Anomaly Detection', tag: 'MLOps',
+    overview: 'Developed anomaly detection algorithms for life-insurance core system server metrics, cement plants, and battery factory scenarios, including algorithms that alerted operators 20 minutes earlier than existing rules of thumb.',
+    approach: null,
+    metrics: [
+      { v: '20 min', l: '// earlier alert than existing rules' }
+    ],
+    stack: ['AIOps', 'Time Series', 'Anomaly Detection', 'Preventive Maintenance'],
+    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+  },
+  {
+    idx: '05', title: 'Production ML API Deployment', tag: 'Deploy',
+    overview: 'Designed ML model systems including code structure, Docker containerization, deployment workflow, automated monitoring, and information visualization. Deployed 10+ real-time and batch ML models as APIs for internal systems.',
+    approach: null,
+    metrics: [
+      { v: '10+', l: '// ML models in production' }
+    ],
+    stack: ['Docker', 'Flask API', 'Monitoring'],
+    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+  },
+  {
+    idx: '★', title: 'Insurance Product AI Agent', tag: 'Agent',
+    overview: 'We built an AI-powered QA system for insurance policy terms to address a core operational pain point — customers frequently contact agents with complex product questions that agents cannot resolve independently, requiring escalation to the specialist Product Division for clarification and response. This system accelerates that process by handling policy-related inquiries directly, reducing escalation volume and response time.',
+    approach: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Core Challenges</div>
+  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--white);font-weight:400">Legal and financial risk in generated responses</strong> — Any answer touching on claims or coverage interpretation may directly impact company liability, requiring strict content controls on generated output.</div>
+  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--white);font-weight:400">Precise and safety-aware input filtering</strong> — The system must reliably block non-insurance queries while handling edge cases such as self-harm-related inputs through an appropriate safety response flow, rather than a simple rejection.</div>
+  <div><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--white);font-weight:400">Tension between explainability and response latency</strong> — Surfacing the model's reasoning improves auditability and trust, but increases response time. A middle-ground approach — summarized reasoning steps — is needed to balance transparency with efficiency.</div>
+</div>
+<div>
+  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Key Design Decisions</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;">
+    <li><strong style="color:var(--white);font-weight:400">Multi-stage RAG pipeline with per-stage accuracy validation</strong> — rather than tuning solely on final answer quality, each stage (retrieval, reranking, generation) is independently measured to localize where degradation originates.</li>
+    <li><strong style="color:var(--white);font-weight:400">Reflective RAG for self-assessed retrieval relevance and dynamic re-querying</strong> — addresses cases where initial retrieval fails silently, surfacing low-confidence retrievals for re-query before generation rather than letting weak context propagate downstream.</li>
+    <li><strong style="color:var(--white);font-weight:400">Parent Document Retriever to decouple indexing granularity from retrieval granularity</strong> — small chunks are embedded for precise semantic matching, but retrieval surfaces the full parent passage to preserve clause context. This directly addresses a failure mode where semantically matched fragments lack the cross-referential context needed for accurate coverage interpretation.</li>
+  </ul>
+</div>`,
+    metrics: [
+      { v: '0.80 → 0.98', l: '// recall@15 improvement' },
+      { v: '2026 Q1', l: '// planned launch window', color: 'var(--yellow)' },
+      { v: 'stable', l: '// no latency increase', color: 'var(--blue)' }
+    ],
+    stack: ['LLM', 'RAG', 'LLM Evaluation', 'LLM Guardrails', 'AI Agent', 'In-memory Database'],
+    images: [
+      { src: 'images/project-Insurance-product-1.png', alt: 'Insurance Product AI Agent — system overview' }
+    ],
+    links: []
+  }
+];
+
+const projModal = document.getElementById('projModal');
+const projModalTitle = document.getElementById('projModalTitle');
+const projModalBody = document.getElementById('projModalBody');
+const closeProjModalBtn = document.getElementById('closeProjModal');
+
+function buildProjModal(p) {
+  const metricsHTML = p.metrics.length ? `
+    <div class="pm-section">
+      <div class="pm-label">// results</div>
+      <div class="pm-metrics">${p.metrics.map(m => `
+        <div class="pm-metric">
+          <div class="pm-metric-v" style="color:${m.color||'var(--green)'};">${m.v}</div>
+          <div class="pm-metric-l">${m.l}</div>
+        </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const approachHTML = p.approach ? `
+    <div class="pm-section">
+      <div class="pm-label">// technical approach</div>
+      <div class="pm-body">${p.approach}</div>
+    </div>` : `
+    <div class="pm-section">
+      <div class="pm-label">// technical approach</div>
+      <div class="pm-placeholder">// details coming soon...</div>
+    </div>`;
+
+  const imagesHTML = p.images?.length ? `
+    <div class="pm-section">
+      <div class="pm-label">// screenshots</div>
+      <div class="pm-images">${p.images.map(img => `
+        <img src="${img.src}" alt="${img.alt}" data-img="${img.src}" data-title="${img.alt}">`).join('')}
+      </div>
+    </div>` : '';
+
+  const linksHTML = p.links.length ? `
+    <div class="pm-links">${p.links.map(l => {
+      const ext = l.internal ? '' : ' target="_blank" rel="noopener"';
+      const cls = l.internal ? 'pm-link pm-link-int' : 'pm-link';
+      return `<a href="${l.href}"${ext} class="${cls}">${l.label}</a>`;
+    }).join('')}</div>` : '';
+
+  projModalBody.innerHTML = `
+    <div style="margin-bottom:1.5rem;">
+      <span style="color:var(--prompt);font-size:12px;margin-right:.75rem;">${p.idx}</span>
+      <span style="font-size:17px;font-weight:500;color:var(--white);">${p.title}</span>
+      <span class="ptag" style="margin-left:.6rem;">${p.tag}</span>
+    </div>
+    <div class="pm-section">
+      <div class="pm-label">// overview</div>
+      <div class="pm-body">${p.overview}</div>
+    </div>
+    ${approachHTML}
+    ${metricsHTML}
+    ${imagesHTML}
+    <div class="pm-section">
+      <div class="pm-label">// stack</div>
+      <div class="tags">${p.stack.map(s => `<span class="stag">${s}</span>`).join('')}</div>
+    </div>
+    ${linksHTML}
+  `;
+
+  projModalBody.querySelectorAll('.pm-link-int').forEach(a => {
+    a.addEventListener('click', () => closeProjModalFn());
+  });
+  projModalBody.querySelectorAll('.pm-images img').forEach(img => {
+    img.addEventListener('click', () => {
+      modalImage.src = img.dataset.img;
+      modalImage.alt = img.dataset.title || '';
+      imageModalTitle.textContent = img.dataset.title || 'screenshot';
+      imageModal.classList.add('open');
+      imageModal.setAttribute('aria-hidden', 'false');
+    });
+  });
+}
+
+function openProjModal(idx) {
+  const p = PROJECTS[idx];
+  projModalTitle.textContent = `project_${p.idx}`;
+  buildProjModal(p);
+  projModal.classList.add('open');
+  projModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeProjModalFn() {
+  projModal.classList.remove('open');
+  projModal.setAttribute('aria-hidden', 'true');
+}
+
+document.querySelectorAll('[data-proj]').forEach(el => {
+  el.addEventListener('click', () => openProjModal(+el.dataset.proj));
+  el.addEventListener('keydown', e => {
+    if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProjModal(+el.dataset.proj); }
+  });
+});
+closeProjModalBtn?.addEventListener('click', closeProjModalFn);
+projModal?.addEventListener('click', e => { if(e.target === projModal) closeProjModalFn(); });
 </script>
 
 <nav id="mob-nav" aria-label="Mobile navigation">
