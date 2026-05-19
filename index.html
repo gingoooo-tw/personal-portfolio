@@ -7,259 +7,248 @@
 <title>ChihChi Kuo — AI Engineer & Data Scientist | Taipei</title>
 <meta name="description" content="AI Engineer specializing in LLM, Agent systems, and production AI services. Based in Taipei, Taiwan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --bg:     #0d1117;
-  --bg2:    #161b22;
-  --bg3:    #1c2430;
-  --border: #30363d;
-  --green:  #3fb950;
-  --blue:   #58a6ff;
-  --purple: #bc8cff;
-  --yellow: #e3b341;
-  --red:    #ff7b72;
-  --cyan:   #79c0ff;
-  --white:  #e6edf3;
-  --muted:  #7d8590;
-  --prompt: #484f58;
+  --bg:       #fdfdfc;
+  --bg-hover: #F5F4F4;
+  --text:     #21201c;
+  --muted:    #63635e;
+  --border:   #e9e9e7;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #111110;
+    --bg-hover: #191918;
+    --text:     #eeeeec;
+    --muted:    #9d9d99;
+    --border:   #2a2a28;
+  }
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
-  background:var(--bg);color:var(--white);
-  font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.7;
-  cursor:none;overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-.cur{position:fixed;width:2px;height:18px;background:var(--green);pointer-events:none;z-index:9999;transform:translateX(-50%);animation:cblink 1s step-end infinite;}
-@keyframes cblink{50%{opacity:0;}}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.025) 2px,rgba(0,0,0,0.025) 4px);}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:0 5%;height:48px;background:var(--bg);border-bottom:1px solid var(--border);}
-.nav-left{display:flex;align-items:center;gap:1.2rem;}
-.ndots{display:flex;gap:5px;}
-.nd{width:10px;height:10px;border-radius:50%;}
-.nd1{background:#ff5f57;}.nd2{background:#febc2e;}.nd3{background:#28c840;}
-.nav-title{color:var(--muted);font-size:12px;letter-spacing:0.03em;}
-.nav-title em{color:var(--green);font-style:normal;}
-nav ul{list-style:none;display:flex;}
-nav ul a{display:block;padding:0 1rem;height:48px;line-height:48px;color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:0.06em;border-left:1px solid var(--border);transition:color 0.15s,background 0.15s;}
-nav ul li:last-child a{border-right:1px solid var(--border);}
-nav ul a:hover{color:var(--green);background:rgba(63,185,80,0.06);}
+.container{
+  max-width:692px;
+  margin:0 auto;
+  padding:48px 24px 96px;
+}
+@media(min-width:640px){
+  .container{padding:128px 24px;}
+}
 
-/* HERO */
-.hero{min-height:100vh;padding:8rem 5% 5rem;display:flex;flex-direction:column;justify-content:center;}
-.hero-win{background:var(--bg2);border:1px solid var(--border);border-radius:8px;max-width:860px;overflow:hidden;}
-.wbar{background:var(--bg3);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;}
-.wdots{display:flex;gap:5px;}
-.wd{width:11px;height:11px;border-radius:50%;}
-.wd1{background:#ff5f57;}.wd2{background:#febc2e;}.wd3{background:#28c840;}
-.wtitle{color:var(--muted);font-size:11px;margin:0 auto;letter-spacing:0.05em;}
-.wbody{padding:2rem 2.5rem 2.5rem;}
-.ln{margin-bottom:3px;}
-.p{color:var(--prompt);}
-.cmd{color:var(--blue);}
-.cg{color:var(--green);}
-.cp{color:var(--purple);}
-.cy{color:var(--yellow);}
-.cr{color:var(--red);}
-.cc{color:var(--cyan);}
-.cm{color:var(--muted);}
-.big-name{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:600;color:var(--green);line-height:1;letter-spacing:-0.02em;margin:1.2rem 0 0.5rem;text-shadow:0 0 40px rgba(63,185,80,0.25);}
-.big-role{font-size:clamp(1rem,2.5vw,1.35rem);color:var(--blue);font-weight:300;margin-bottom:1.5rem;}
-.bcur{display:inline-block;width:10px;height:1.1em;background:var(--green);vertical-align:middle;margin-left:3px;animation:cblink 1s step-end infinite;}
-.hstats{display:flex;border-top:1px solid var(--border);}
-.hstat{flex:1;padding:1.2rem 1.5rem;border-right:1px solid var(--border);}
-.hstat:last-child{border-right:none;}
-.hstats-single .hstat{border-right:none;}
-.hstat-n{font-size:1.8rem;font-weight:600;color:var(--green);line-height:1;}
-.hstat-l{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:0.04em;}
+/* HEADER */
+header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:80px;
+}
+@media(min-width:640px){header{margin-bottom:128px;}}
+.h-name{display:block;font-size:15px;font-weight:500;color:var(--text);text-decoration:none;}
+.h-role{display:block;font-size:15px;color:var(--muted);margin-top:2px;line-height:1.3;}
+
+/* LANG TOGGLE */
+#lang-toggle{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:13px;
+  cursor:pointer;
+  font-family:inherit;
+  transition:background 0.12s,color 0.12s,border-color 0.12s;
+  flex-shrink:0;
+  margin-top:1px;
+}
+#lang-toggle:hover{background:var(--bg-hover);color:var(--text);border-color:var(--muted);}
 
 /* SECTIONS */
-.sec{padding:5rem 5%;}
-.sec-alt{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.sec-cmt{color:var(--muted);font-size:12px;margin-bottom:0.4rem;}
-.sec-cmt span{color:var(--green);}
-.sec-h{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:500;color:var(--white);letter-spacing:-0.01em;margin-bottom:2.5rem;}
+section{margin-top:64px;}
+@media(min-width:640px){section{margin-top:96px;}}
+.sec-label{
+  display:block;font-size:15px;font-weight:500;
+  margin-bottom:20px;
+}
+@media(min-width:640px){.sec-label{margin-bottom:24px;}}
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start;}
-.codeblock{background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:1rem;}
-.cb-head{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:11px;}
-.cb-head .fn{color:var(--yellow);}
-.cb-head .wdots{margin-right:4px;}
-.cb-body{padding:1.4rem 1.6rem;}
-.cl{margin-bottom:2px;font-size:13px;}
-.lnum{color:var(--prompt);user-select:none;margin-right:1.2rem;min-width:1.5rem;display:inline-block;text-align:right;}
-.skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
-.skill{font-size:11px;padding:5px 10px;border:1px solid var(--border);border-radius:3px;color:var(--cyan);letter-spacing:0.04em;transition:border-color 0.15s,background 0.15s;}
-.skill:hover{border-color:var(--cyan);background:rgba(121,192,255,0.06);}
-.prose-blocks{display:flex;flex-direction:column;gap:1.2rem;}
-.pb{border-left:2px solid var(--border);padding-left:1.1rem;}
-.pb p{color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:300;line-height:1.75;}
-.pb p strong{color:var(--white);font-weight:500;}
-.exp-t{width:100%;border-collapse:collapse;margin-top:0.5rem;}
-.exp-t td{padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;}
-.exp-t tr:last-child td{border-bottom:none;}
-.ey{color:var(--muted);width:90px;padding-right:1rem;}
-.er{color:var(--white);}
-.eo{font-size:12px;color:var(--muted);margin-top:2px;}
+/* BIO / PROSE */
+.bio{color:var(--muted);font-size:15px;line-height:1.7;}
+.bio p+p{margin-top:12px;}
+.bio strong{color:var(--text);font-weight:500;}
+.bio a{color:var(--text);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+.bio a:hover{color:var(--muted);}
 
-/* PROJECTS */
-.feat{background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:1.5rem;}
-.feat-top{background:var(--bg3);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;}
-.feat-top .fl{font-size:11px;color:var(--yellow);letter-spacing:0.08em;}
-.feat-top a{font-size:11px;color:var(--green);text-decoration:none;letter-spacing:0.04em;}
-.feat-top a:hover{text-decoration:underline;}
-.feat-body{padding:1.5rem 2rem;display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;align-items:center;}
-.feat-title{font-size:1.25rem;font-weight:500;color:var(--white);margin-bottom:0.7rem;line-height:1.2;}
-.feat-desc{color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:300;line-height:1.65;margin-bottom:1rem;}
-.tags{display:flex;flex-wrap:wrap;gap:5px;}
-.stag{font-size:11px;color:var(--cyan);border:1px solid rgba(121,192,255,0.2);border-radius:2px;padding:2px 7px;}
-.fnums{display:flex;flex-direction:column;gap:10px;}
-.fnum{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:12px 16px;}
-.fnum-v{font-size:1.6rem;font-weight:600;line-height:1;}
-.fnum-l{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:0.04em;}
+/* EXPERIENCE */
+.exp-list{margin-top:28px;display:flex;flex-direction:column;gap:12px;}
+.exp-item{display:flex;gap:16px;font-size:14px;color:var(--text);}
+.exp-year{color:var(--muted);white-space:nowrap;min-width:84px;padding-top:1px;}
+.exp-role{font-weight:400;}
+.exp-sub{color:var(--muted);font-size:13px;margin-top:1px;}
 
-.proj-list{display:flex;flex-direction:column;}
-.proj{display:grid;grid-template-columns:3rem 1fr auto;align-items:start;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;position:relative;transition:background 0.12s;}
-.proj:first-child{border-top:1px solid var(--border);}
-.proj::before{content:'';position:absolute;left:-5%;right:-5%;top:0;bottom:0;background:rgba(63,185,80,0.04);opacity:0;transition:opacity 0.12s;}
-.proj:hover::before{opacity:1;}
-[data-proj]{cursor:pointer;}
-.proj > *{position:relative;}
-.pidx{color:var(--prompt);font-size:12px;padding-top:2px;}
-.pname{font-size:15px;font-weight:500;color:var(--white);margin-bottom:4px;}
-.ptag{font-size:10px;color:var(--purple);border:1px solid rgba(188,140,255,0.3);border-radius:2px;padding:1px 6px;margin-left:8px;vertical-align:middle;}
-.pdesc{color:var(--muted);font-size:13px;font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.55;margin-bottom:7px;}
-.plink{color:var(--green);font-size:12px;letter-spacing:0.04em;white-space:nowrap;padding-top:2px;}
+/* ITEM LIST (projects, publications) */
+.item-list{display:flex;flex-direction:column;gap:28px;}
+@media(min-width:640px){.item-list{gap:0;}}
 
-/* VIDEO */
-.vid-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;}
-.vmeta{display:flex;flex-direction:column;gap:1.1rem;}
-.vmi{border-left:2px solid var(--border);padding-left:1rem;}
-.vmi-l{font-size:11px;color:var(--muted);letter-spacing:0.07em;margin-bottom:2px;}
-.vmi-v{font-size:14px;color:var(--white);}
-.vmi-v.g{color:var(--green);}
-.vmi-v.sm{font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:300;color:var(--muted);}
-.outblock{margin-top:1.3rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1rem 1.2rem;}
-.obl{font-size:12px;margin-bottom:2px;}
-.vframe{border:1px solid var(--border);border-radius:6px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 0 30px rgba(63,185,80,0.07);}
-.vframe iframe{width:100%;height:100%;display:block;border:none;}
+.item{
+  display:flex;flex-direction:column;
+  margin:0 -12px;padding:0 12px;
+  border-radius:6px;
+  text-decoration:none;color:var(--text);
+  cursor:pointer;transition:background 0.12s;
+  border:none;background:transparent;
+  text-align:left;width:calc(100% + 24px);
+  font-family:inherit;font-size:inherit;
+}
+@media(min-width:640px){.item{padding:12px;}}
+.item:hover{background:var(--bg-hover);}
+.item-title{font-size:15px;color:var(--text);}
+.item-desc{font-size:15px;color:var(--muted);margin-top:1px;}
 
+/* DEMO SECTION */
+.demo-trigger{
+  display:flex;align-items:center;gap:12px;
+  margin:0 -12px;padding:0 12px;
+  border-radius:6px;cursor:pointer;
+  transition:background 0.12s;
+  background:transparent;border:none;
+  font-family:inherit;font-size:15px;color:var(--text);
+  text-align:left;width:calc(100% + 24px);
+}
+@media(min-width:640px){.demo-trigger{padding:12px;}}
+.demo-trigger:hover{background:var(--bg-hover);}
+.demo-play{
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--muted);flex-shrink:0;
+}
+.demo-info{display:flex;flex-direction:column;}
+.demo-title{font-size:15px;color:var(--text);}
+.demo-sub{font-size:15px;color:var(--muted);margin-top:1px;}
 
-.video-launch{position:relative;display:flex;align-items:center;justify-content:center;min-height:260px;background:linear-gradient(135deg,rgba(63,185,80,0.08),rgba(88,166,255,0.08)),var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 0 30px rgba(63,185,80,0.07);cursor:pointer;}
-.video-launch::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(63,185,80,0.14),transparent 55%);opacity:.8;}
-.video-launch-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;}
-.play-btn{width:72px;height:72px;border-radius:50%;border:1px solid var(--green);background:rgba(63,185,80,0.12);color:var(--green);font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;transition:transform .15s,background .15s;}
-.video-launch:hover .play-btn{transform:scale(1.06);background:rgba(63,185,80,0.2);}
-.video-title{font-size:16px;color:var(--white);margin-bottom:4px;}
-.video-sub{font-size:12px;color:var(--muted);}
-.expand-note{margin-top:10px;font-size:11px;color:var(--cyan);letter-spacing:.05em;}
-.demo-gallery{margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.demo-shot{background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s;}
-.demo-shot:hover{transform:translateY(-2px);border-color:var(--green);}
-.demo-shot img{width:100%;display:block;}
-.demo-cap{padding:.75rem 1rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted);}
-.demo-cap strong{color:var(--white);font-weight:500;}
-.modal{position:fixed;inset:0;background:rgba(13,17,23,.88);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:4vw;}
+.demo-imgs{
+  margin-top:16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;
+}
+@media(max-width:480px){.demo-imgs{grid-template-columns:1fr;}}
+.demo-img-btn{
+  background:transparent;border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;cursor:zoom-in;
+  transition:border-color 0.12s;padding:0;
+}
+.demo-img-btn:hover{border-color:var(--muted);}
+.demo-img-btn img{width:100%;display:block;}
+.demo-img-cap{
+  padding:8px 10px;font-size:12px;
+  color:var(--muted);border-top:1px solid var(--border);text-align:left;
+}
+
+/* MODALS */
+.modal{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(4px);
+  z-index:2000;
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
 .modal.open{display:flex;}
-.modal-card{width:min(1120px,94vw);background:var(--bg2);border:1px solid var(--border);border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,.45);overflow:hidden;}
-.modal-bar{height:44px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 14px;}
-.modal-title{font-size:12px;color:var(--muted);letter-spacing:.05em;}
-.modal-close{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:4px;width:28px;height:28px;cursor:pointer;font-size:18px;line-height:1;}
-.modal-close:hover{color:var(--green);border-color:var(--green);}
+.modal-card{
+  width:min(1100px,92vw);
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
+}
+.modal-head{
+  height:48px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;
+}
+.modal-head-title{font-size:14px;color:var(--muted);}
+.modal-close{
+  background:transparent;border:1px solid var(--border);
+  color:var(--muted);border-radius:6px;
+  width:28px;height:28px;cursor:pointer;
+  font-size:16px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.12s,color 0.12s;
+  font-family:inherit;
+}
+.modal-close:hover{color:var(--text);border-color:var(--muted);}
+
 .modal-video{aspect-ratio:16/9;background:#000;}
 .modal-video iframe{width:100%;height:100%;display:block;border:0;}
-.modal-fallback{padding:.8rem 1rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted);}
-.modal-fallback a{color:var(--green);text-decoration:none;}
-.modal-img-card{width:min(1200px,94vw);max-height:92vh;background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.45);}
-.modal-img-wrap{max-height:calc(92vh - 44px);overflow:auto;background:var(--bg);}
-.modal-img-wrap img{width:100%;display:block;}
-#imageModal,#videoModal{z-index:3000;}
-.proj-modal{width:min(760px,94vw);max-height:88vh;background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.45);display:flex;flex-direction:column;}
-.proj-modal-body{overflow-y:auto;padding:2rem 2.5rem 2.5rem;flex:1;}
-.pm-section{margin-bottom:1.8rem;}
-.pm-label{font-size:10px;color:var(--prompt);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;}
-.pm-body{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;}
-.pm-metrics{display:flex;gap:1.5rem;flex-wrap:wrap;}
-.pm-metric{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px 16px;}
-.pm-metric-v{font-size:1.4rem;font-weight:600;color:var(--green);line-height:1;}
-.pm-metric-l{font-size:11px;color:var(--prompt);margin-top:3px;}
-.pm-links{display:flex;gap:.75rem;flex-wrap:wrap;}
-.pm-link{font-size:12px;color:var(--blue);border:1px solid rgba(88,166,255,.25);padding:5px 14px;border-radius:3px;text-decoration:none;}
-.pm-link:hover{background:rgba(88,166,255,.08);}
-.pm-placeholder{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--prompt);border-left:2px solid var(--border);padding-left:.8rem;}
-.pm-images{display:flex;flex-direction:column;gap:.75rem;}
-.pm-images img{width:100%;display:block;border-radius:4px;border:1px solid var(--border);cursor:zoom-in;transition:opacity .15s;}
-.pm-images img:hover{opacity:.88;}
+.modal-note{padding:10px 16px;font-size:13px;color:var(--muted);}
+.modal-note a{color:var(--text);text-decoration:underline;text-underline-offset:3px;}
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}.cform{background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.cf-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);}
-.cf-body{padding:1.5rem;}
-.field{margin-bottom:1.1rem;}
-.flabel{font-size:11px;color:var(--muted);margin-bottom:4px;letter-spacing:0.05em;}
-.fval{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:8px 12px;font-size:13px;color:var(--prompt);font-family:'IBM Plex Mono',monospace;}
-.sbtn{display:inline-flex;align-items:center;gap:8px;margin-top:0.5rem;padding:10px 20px;background:rgba(63,185,80,0.1);border:1px solid var(--green);border-radius:4px;font-size:13px;color:var(--green);font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;text-decoration:none;transition:background 0.15s;}
-.sbtn:hover{background:rgba(63,185,80,0.18);}
-.clinks{display:flex;flex-direction:column;}
-.clink{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--muted);transition:color 0.15s;}
-.clink:first-child{border-top:1px solid var(--border);}
-.clink:hover{color:var(--green);}
-.cl-left{display:flex;align-items:center;gap:12px;}
-.cl-icon{width:32px;height:32px;border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;}
-.cl-icon svg{width:14px;height:14px;fill:currentColor;}
-.cl-key{font-size:11px;letter-spacing:0.07em;}
-.cl-val{font-size:13px;}
-.cl-arr{font-size:14px;transition:transform 0.15s;}
-.clink:hover .cl-arr{transform:translateX(4px);}
+.modal-img-card{
+  width:min(1200px,92vw);max-height:90vh;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
+}
+.modal-img-wrap{max-height:calc(90vh - 48px);overflow:auto;}
+.modal-img-wrap img{width:100%;display:block;}
+
+.proj-modal-card{
+  width:min(720px,92vw);max-height:88vh;
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.12);
+  display:flex;flex-direction:column;
+}
+.proj-modal-body{overflow-y:auto;padding:28px 28px 32px;flex:1;}
+.pm-title{font-size:17px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.pm-tag{font-size:12px;color:var(--muted);margin-left:8px;vertical-align:middle;font-weight:400;}
+.pm-section{margin-top:24px;}
+.pm-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.pm-body{font-size:14px;color:var(--muted);line-height:1.75;}
+.pm-body strong{color:var(--text);font-weight:500;}
+.pm-metrics{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.pm-metric{
+  background:var(--bg-hover);border:1px solid var(--border);
+  border-radius:6px;padding:10px 14px;
+}
+.pm-metric-v{font-size:1.2rem;font-weight:500;color:var(--text);line-height:1;}
+.pm-metric-l{font-size:12px;color:var(--muted);margin-top:3px;}
+.pm-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.pm-stack-item{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:3px 9px;}
+.pm-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+.pm-link{
+  font-size:13px;color:var(--text);
+  border:1px solid var(--border);padding:6px 14px;
+  border-radius:6px;text-decoration:none;transition:background 0.12s;
+}
+.pm-link:hover{background:var(--bg-hover);}
+.pm-images{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+.pm-images img{width:100%;display:block;border-radius:6px;border:1px solid var(--border);cursor:zoom-in;transition:opacity .12s;}
+.pm-images img:hover{opacity:0.85;}
+#imageModal{z-index:3000;}
 
 /* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:1.2rem 5%;display:flex;justify-content:space-between;align-items:center;}
-footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
-.fstatus{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--green);}
-.sdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;};}
-
-@media(max-width:900px){
-  .about-grid,.contact-grid,.vid-grid,.feat-body,.demo-gallery{grid-template-columns:1fr;gap:2rem;}
-  .proj{grid-template-columns:2rem 1fr;}
-  .plink{display:none;}
-  nav ul{display:none;}
-  body{padding-bottom:52px;}
-  #mob-nav{display:flex;}
-  #voice-agent .vid-grid > div:last-child{order:-1;}
+footer{
+  margin-top:64px;
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  font-size:13px;color:var(--muted);
 }
-@media(max-width:600px){
-  .hstats{flex-direction:column;}
-  .hstat{border-right:none;border-bottom:1px solid var(--border);}
-  .hstat:last-child{border-bottom:none;}
-  .sec{padding:3rem 4%;}
-  .hero{padding:6rem 4% 3rem;}
-  .wbody{padding:1.5rem 1.25rem 1.5rem;}
-  .feat-body{padding:1rem 1.25rem;}
-  .sec-h{margin-bottom:1.5rem;}
-  .cb-body{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  footer{flex-direction:column;gap:.4rem;text-align:center;padding:.9rem 4%;}
-  .video-launch{min-height:unset;}
-  .modal{padding:2vw;}
-}
-
-/* Touch devices: disable custom cursor */
-@media(pointer:coarse){
-  body{cursor:auto;}
-  .cur{display:none;}
-  .video-launch,.demo-shot{cursor:pointer;}
-}
-
-/* Mobile bottom nav */
-#mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--bg);border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom,0px);}
-.mob-nav-inner{display:flex;justify-content:space-around;}
-#mob-nav a{display:block;color:var(--muted);text-decoration:none;font-size:10px;letter-spacing:.06em;padding:11px 10px;text-align:center;transition:color .15s;white-space:nowrap;}
-#mob-nav a:active{color:var(--green);}
+@media(min-width:640px){footer{margin-top:96px;}}
+footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;}
+footer a:hover{color:var(--text);}
 </style>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -282,401 +271,364 @@ footer span{font-size:11px;color:var(--prompt);letter-spacing:0.04em;}
   ]
 }
 </script>
-
 </head>
 <body>
+<main class="container">
 
-<div class="cur" id="cur"></div>
-
-<nav>
-  <div class="nav-left">
-    <div class="ndots"><div class="nd nd1"></div><div class="nd nd2"></div><div class="nd nd3"></div></div>
-    <span class="nav-title"><em>chihchi Kuo</em>@portfolio:~</span>
+<!-- HEADER -->
+<header>
+  <div>
+    <span class="h-name">ChihChi Kuo</span>
+    <span class="h-role" data-i18n-html="h-role">AI Engineer · Data Scientist · Taipei</span>
   </div>
-  <ul>
-    <li><a href="#about">about</a></li>
-    <li><a href="#projects">work</a></li>
-    <li><a href="#voice-agent">demo</a></li>
-    <li><a href="#publications">publications</a></li>
-    <li><a href="#contact">contact</a></li>
-  </ul>
-</nav>
+  <button id="lang-toggle" aria-label="Switch language">EN</button>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-win">
-    <div class="wbar">
-      <div class="wdots"><div class="wd wd1"></div><div class="wd wd2"></div><div class="wd wd3"></div></div>
-      <span class="wtitle">chihchi — portfolio.sh</span>
-    </div>
-    <div class="wbody">
-      <div class="ln"><span class="p">~ $ </span><span class="cmd">./init_profile.sh</span></div>
-      <div class="ln cm" style="margin-top:4px;">Loading LinkedIn profile... <span class="cg">✓ synced</span></div>
-      <div class="big-name">ChihChi Kuo</div>
-      <div class="big-role">AI Engineer · Data Scientist Engineer</div>
-      <div class="ln"><span class="p">// </span><span class="cm">name:&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="cy">&nbsp;郭  致 齊</span></div>
-      <div class="ln"><span class="p">// </span><span class="cm">location:</span> <span class="cy">&nbsp;Taipei, Taiwan 🇹🇼</span></div>
-      <div class="ln"><span class="p">// </span><span class="cm">current:&nbsp;</span> <span class="cp">&nbsp;A Leading Financial Institution · AI &amp; Data Team</span></div>
-      <div class="ln"><span class="p">// </span><span class="cm">focus:&nbsp;&nbsp;&nbsp;</span> <span class="cp">&nbsp;Agent Applications · LLM Evaluation · Production AI Services</span></div>
-      <div class="ln" style="margin-top:1.5rem;"><span class="p">~ $ </span><span class="cmd">cat mission.txt</span></div>
-      <div class="ln" style="margin-top:6px;max-width:640px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:300;color:var(--muted);">"I build AI ideas into real services — from fuzzy enterprise concepts to validated systems that can run in production."<span class="bcur"></span></div>
-    </div>
-    <div class="hstats hstats-single">
-      <div class="hstat"><div class="hstat-n">7yr+</div><div class="hstat-l">// data &amp; AI experience</div></div>
-    </div>
+<!-- TODAY -->
+<section id="about">
+  <span class="sec-label" data-i18n="sec-today">Today</span>
+  <div class="bio">
+    <p data-i18n-html="bio-1">I'm an AI Engineer at a leading financial institution in Taipei, turning fuzzy enterprise AI ideas into <strong>validated, deployable services</strong>. My work spans requirement clarification, Agent system design, LLM evaluation, and production deployment.</p>
+    <p data-i18n-html="bio-2">Currently focused on <strong>Agentic AI</strong>, <strong>LLM evaluation</strong>, and <strong>RAG pipeline optimization</strong>. Before that: OCR, time-series anomaly detection, AIOps, and ML API infrastructure. 7+ years in data and AI.</p>
   </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="sec sec-alt">
-  <div class="sec-cmt"><span>##</span> 01 — about.py</div>
-  <h2 class="sec-h">Who is ChihChi Kuo?</h2>
-  <div class="about-grid">
-    <div>
-      <div class="codeblock">
-        <div class="cb-head">
-          <div class="wdots"><div class="wd wd1"></div><div class="wd wd2"></div><div class="wd wd3"></div></div>
-          <span class="fn">chihchi.py</span>
-        </div>
-        <div class="cb-body">
-          <div class="cl"><span class="lnum">1</span><span class="cp">class</span> <span class="cy">ChihChiKuo</span>(<span class="cc">AIEngineer</span>):</div>
-          <div class="cl"><span class="lnum">2</span></div>
-          <div class="cl"><span class="lnum">3</span>&nbsp;&nbsp;<span class="cc">title</span> = <span class="cg">"AI Engineer | Data Scientist Engineer"</span></div>
-          <div class="cl"><span class="lnum">4</span>&nbsp;&nbsp;<span class="cc">company</span> = <span class="cg">"A Leading Financial Institution"</span></div>
-          <div class="cl"><span class="lnum">5</span>&nbsp;&nbsp;<span class="cc">education</span> = <span class="cg">"NCTU · M.S. Industrial Engineering"</span></div>
-          <div class="cl"><span class="lnum">6</span>&nbsp;&nbsp;<span class="cc">focus</span> = [<span class="cg">"Agentic AI"</span>, <span class="cg">"LLM Evaluation"</span>, <span class="cg">"MLOps"</span>]</div>
-          <div class="cl"><span class="lnum">7</span></div>
-          <div class="cl"><span class="lnum">8</span>&nbsp;&nbsp;<span class="cp">def</span> <span class="cy">build</span>(self):</div>
-          <div class="cl"><span class="lnum">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cp">return</span> [</div>
-          <div class="cl"><span class="lnum">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cg">"insurance product chatbot"</span>,</div>
-          <div class="cl"><span class="lnum">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cg">"AI voice agent MVP"</span>,</div>
-          <div class="cl"><span class="lnum">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cg">"OCR / AIOps / anomaly detection"</span></div>
-          <div class="cl"><span class="lnum">14</span>&nbsp;&nbsp;&nbsp;&nbsp;]</div>
-          <div class="cl"><span class="lnum">15</span></div>
-          <div class="cl"><span class="lnum">16</span>&nbsp;&nbsp;<span class="cp">def</span> <span class="cy">mission</span>(self):</div>
-          <div class="cl"><span class="lnum">17</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cp">return</span> <span class="cg">"Turn AI exploration into production service"</span></div>
-        </div>
-      </div>
-      <div class="skill-grid">
-        <span class="skill">Agentic AI System</span><span class="skill">Python</span>
-        <span class="skill">LLM Evaluation</span><span class="skill">Docker</span>
-        <span class="skill">Voice Agent</span><span class="skill">Model API</span>
-        <span class="skill">OCR Model</span><span class="skill">Serverless</span>
-        <span class="skill">Anomaly Detection</span><span class="skill">Cloud Native</span>
-      </div>
-    </div>
-    <div class="prose-blocks">
-      <div class="pb"><p>Hi, I'm <strong>ChihChi Kuo</strong> — an AI Engineer and Data Scientist Engineer based in Taiwan, currently working in the financial industry on an AI &amp; Data Team.</p></div>
-      <div class="pb"><p>I specialize in moving enterprise AI ideas from early exploration into <strong>validated, deployable services</strong>. My work covers requirement clarification, technical selection, Agent application design, system design, software development, deployment, and evaluation.</p></div>
-      <div class="pb"><p>Recently, I worked on an insurance product chatbot and improved the document retrieval stage to <strong>recall@15 = 0.98</strong>. I also helped design and build an <strong>AI Voice Agent MVP</strong> using OpenAI Realtime model concepts for inbound premium-related service calls.</p></div>
-      <div class="pb"><p>Before focusing on LLM and Agent systems, I built OCR, time-series anomaly detection, AIOps, real-time and batch ML APIs, and production-grade model deployment workflows.</p></div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <span class="exp-year">2025 – <span data-i18n="exp-now">Now</span></span>
       <div>
-        <div class="sec-cmt" style="margin-bottom:0.75rem;"><span>##</span> experience</div>
-        <table class="exp-t">
-          <tr><td class="ey">2025 – Now</td><td><div class="er">Data Scientist Engineer</div><div class="eo">A Leading Financial Institution · AI / LLM / Agent applications</div></td></tr>
-          <tr><td class="ey">2021 – 2025</td><td><div class="er">Data Engineer</div><div class="eo">A Leading Financial Institution · ML services, OCR, AIOps, internal LLM tooling</div></td></tr>
-          <tr><td class="ey">2019 – 2021</td><td><div class="er">Data Scientist</div><div class="eo">A Manufacturing Corporation · anomaly detection and regression modeling</div></td></tr>
-          <tr><td class="ey">2017 – 2019</td><td><div class="er">M.S. Industrial Engineering and Management</div><div class="eo">National Yang Ming Chiao Tung University</div></td></tr>
-        </table>
+        <div class="exp-role" data-i18n="exp-0-role">Data Scientist Engineer</div>
+        <div class="exp-sub" data-i18n="exp-0-sub">A Leading Financial Institution · AI / LLM / Agent applications</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="sec">
-  <div class="sec-cmt"><span>##</span> 02 — work/</div>
-  <h2 class="sec-h">Selected Work</h2>
-
-  <div class="feat">
-    <div class="feat-top">
-      <span class="fl">★ FEATURED WORK</span>
-      <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank">→ LinkedIn Profile</a>
-    </div>
-    <div class="feat-body" role="button" tabindex="0" data-proj="5">
+    <div class="exp-item">
+      <span class="exp-year">2021 – 2025</span>
       <div>
-        <h3 class="feat-title">Insurance Product AI Agent <span class="ptag">Agent</span></h3>
-        <p class="feat-desc">Collaborated with a multi-developer team on a proof-of-concept AI assistant for insurance policy clauses. Built a knowledge-retrieval-driven Q&amp;A workflow and optimized retrieval strategy to improve recall while keeping latency stable.</p>
-        <div class="tags">
-          <span class="stag">LLM</span><span class="stag">RAG</span><span class="stag">LLM Evaluation</span>
-          <span class="stag">LLM Guardrails</span><span class="stag">AI Agent</span><span class="stag">In-memory Database</span>
-        </div>
-      </div>
-      <div class="fnums">
-        <div class="fnum"><div class="fnum-v cg">0.80&ensp;→&ensp;0.98</div><div class="fnum-l">// recall@15 improvement</div></div>
-        <div class="fnum"><div class="fnum-v cy">2026 Q1</div><div class="fnum-l">// planned launch window</div></div>
-        <div class="fnum"><div class="fnum-v" style="color:var(--blue);">stable</div><div class="fnum-l">// no latency increase</div></div>
+        <div class="exp-role" data-i18n="exp-1-role">Data Engineer</div>
+        <div class="exp-sub" data-i18n="exp-1-sub">A Leading Financial Institution · ML services, OCR, AIOps, internal LLM tooling</div>
       </div>
     </div>
-  </div>
-
-  <div class="proj-list">
-    <div role="button" tabindex="0" class="proj" data-proj="0">
-      <div class="pidx">01</div>
-      <div><div class="pname">AI Voice Agent <span class="ptag">Agent</span></div><div class="pdesc">Led development of a voice agent MVP for premium-related inbound calls using OpenAI Realtime model concepts. Designed dialogue flow, state-flow controls, and quality metrics for response quality, task completion, and interaction experience. Includes a live demo video below.</div><div class="tags"><span class="stag">OpenAI Realtime Model</span><span class="stag">Voice Agent</span><span class="stag">Tool Calling</span><span class="stag">WebSocket</span></div></div>
-      <div class="plink">16.4%&ensp;→&ensp;8.6%</div>
+    <div class="exp-item">
+      <span class="exp-year">2019 – 2021</span>
+      <div>
+        <div class="exp-role" data-i18n="exp-2-role">Data Scientist</div>
+        <div class="exp-sub" data-i18n="exp-2-sub">A Manufacturing Corporation · anomaly detection and regression modeling</div>
+      </div>
     </div>
-    <div role="button" tabindex="0" class="proj" data-proj="1">
-      <div class="pidx">02</div>
-      <div><div class="pname">Internal LLM Coding Assistant <span class="ptag">Deploy</span></div><div class="pdesc">Built an internal large language model service with a VS Code extension to provide GitHub Copilot-like assistance for IT teams while reducing risks around sensitive data and personal information leakage.</div><div class="tags"><span class="stag">LLM Deployment</span><span class="stag">Self Hosted AI</span><span class="stag">HuggingFace</span></div></div>
-      <div class="plink">→ details</div>
-    </div>
-    <div role="button" tabindex="0" class="proj" data-proj="2">
-      <div class="pidx">03</div>
-      <div><div class="pname">OCR Key Information Extraction <span class="ptag">CV</span></div><div class="pdesc">Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.</div><div class="tags"><span class="stag">OCR</span><span class="stag">Computer Vision</span><span class="stag">Model Optimization</span><span class="stag">PaddleOCR</span></div></div>
-      <div class="plink">81%&ensp;→&ensp;93%</div>
-    </div>
-    <div role="button" tabindex="0" class="proj" data-proj="3">
-      <div class="pidx">04</div>
-      <div><div class="pname">AIOps &amp; Time-Series Anomaly Detection <span class="ptag">MLOps</span></div><div class="pdesc">Developed anomaly detection algorithms for life-insurance core system server metrics, cement plants, and battery factory scenarios, including algorithms that alerted operators 20 minutes earlier than existing rules of thumb.</div><div class="tags"><span class="stag">AIOps</span><span class="stag">Time Series</span><span class="stag">Anomaly Detection</span><span class="stag">Preventive Maintenance</span></div></div>
-      <div class="plink">20 min earlier</div>
-    </div>
-    <div role="button" tabindex="0" class="proj" data-proj="4">
-      <div class="pidx">05</div>
-      <div><div class="pname">Production ML API Deployment <span class="ptag">Deploy</span></div><div class="pdesc">Designed ML model systems including code structure, Docker containerization, deployment workflow, automated monitoring, and information visualization. Deployed 10+ real-time and batch ML models as APIs for internal systems.</div><div class="tags"><span class="stag">Docker</span><span class="stag">Flask API</span><span class="stag">Monitoring</span></div></div>
-      <div class="plink">10+ models</div>
+    <div class="exp-item">
+      <span class="exp-year">2017 – 2019</span>
+      <div>
+        <div class="exp-role" data-i18n="exp-3-role">M.S. Industrial Engineering</div>
+        <div class="exp-sub" data-i18n="exp-3-sub">National Yang Ming Chiao Tung University</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- VOICE AGENT DEMO -->
-<section id="voice-agent" class="sec sec-alt">
-  <div class="sec-cmt"><span>##</span> 03 — demos/voice-agent</div>
-  <h2 class="sec-h">AI Voice Agent Demo</h2>
-  <div class="vid-grid">
-    <div>
-      <div class="vmeta">
-        <div class="vmi"><div class="vmi-l">// project</div><div class="vmi-v g">Premium-related Inbound Call Voice Agent</div></div>
-        <div class="vmi"><div class="vmi-l">// architecture</div><div class="vmi-v">OpenAI Realtime API · tool calling · state-machine flow · LLM as a judge</div></div>
-        <div class="vmi"><div class="vmi-l">// result</div><div class="vmi-v">Unstable dialogue cases reduced from 16.4% to 8.6%</div></div>
-        <div class="vmi"><div class="vmi-l">// description</div><div class="vmi-v sm">A practical voice-agent MVP for premium-related service scenarios, redesigned from prompt-only behavior into a modular Voice Agent + Tool Calling system. The flow uses guardrails, conversation-state tools, intent identification, follow-up classification, and post-session scoring.</div></div>
-      </div>
-      <div class="outblock">
-        <div class="obl"><span class="p">$ </span><span class="cmd">open ./voice_agent_demo</span></div>
-        <div class="obl cg" style="margin-top:4px;">✓ Click to launch modal player</div>
-        <div class="obl cm">Platform: YouTube · Scenario: inbound service call</div>
-      </div>
-    </div>
-    <div>
-      <button class="video-launch" id="openVideo" type="button" aria-label="Open AI Voice Agent demo video">
-        <div class="video-launch-inner">
-          <div class="play-btn">▶</div>
-          <div class="video-title">AI Voice Agent Demo</div>
-          <div class="video-sub">Open in page modal / lightbox</div>
-          <div class="expand-note">↗ expand player</div>
-        </div>
-      </button>
-    </div>
+<!-- WORK -->
+<section id="projects">
+  <span class="sec-label" data-i18n="sec-work">Work</span>
+  <div class="item-list">
+    <button class="item" data-proj="5">
+      <span class="item-title" data-i18n="proj-5-title">Insurance Product AI Agent</span>
+      <span class="item-desc"  data-i18n="proj-5-desc">RAG pipeline for insurance policy Q&amp;A — improved recall@15 from 0.80 to 0.98 without latency increase.</span>
+    </button>
+    <button class="item" data-proj="0">
+      <span class="item-title" data-i18n="proj-0-title">AI Voice Agent</span>
+      <span class="item-desc"  data-i18n="proj-0-desc">Voice agent MVP for inbound premium-service calls — reduced unstable dialogue rate from 16.4% to 8.6%.</span>
+    </button>
+    <button class="item" data-proj="1">
+      <span class="item-title" data-i18n="proj-1-title">Internal LLM Coding Assistant</span>
+      <span class="item-desc"  data-i18n="proj-1-desc">Self-hosted LLM service with VS Code extension for IT teams, reducing sensitive data leakage risk.</span>
+    </button>
+    <button class="item" data-proj="2">
+      <span class="item-title" data-i18n="proj-2-title">OCR Key Information Extraction</span>
+      <span class="item-desc"  data-i18n="proj-2-desc">Improved business document OCR accuracy from 81% to 93% in production.</span>
+    </button>
+    <button class="item" data-proj="3">
+      <span class="item-title" data-i18n="proj-3-title">AIOps &amp; Anomaly Detection</span>
+      <span class="item-desc"  data-i18n="proj-3-desc">Time-series anomaly detection for server metrics and industrial scenarios — 20-minute earlier alerts vs. rule-based systems.</span>
+    </button>
+    <button class="item" data-proj="4">
+      <span class="item-title" data-i18n="proj-4-title">Production ML API Deployment</span>
+      <span class="item-desc"  data-i18n="proj-4-desc">Designed and deployed 10+ real-time and batch ML models as internal APIs, with monitoring and Docker workflows.</span>
+    </button>
   </div>
+</section>
 
-  <div class="demo-gallery">
-    <button class="demo-shot" type="button" data-img="images/voice-agent-1.png" data-title="Voice Agent Architecture">
+<!-- DEMO -->
+<section id="demo">
+  <span class="sec-label" data-i18n="sec-demo">Demo</span>
+  <button class="demo-trigger" id="openVideo" type="button" aria-label="Open AI Voice Agent demo video">
+    <div class="demo-play">▶</div>
+    <div class="demo-info">
+      <span class="demo-title" data-i18n="demo-title">AI Voice Agent Demo</span>
+      <span class="demo-sub"   data-i18n="demo-sub">OpenAI Realtime API · inbound premium-service call scenario</span>
+    </div>
+  </button>
+  <div class="demo-imgs">
+    <button class="demo-img-btn" type="button" data-img="images/voice-agent-1.png" data-title="Voice Agent Architecture">
       <img src="images/voice-agent-1.png" alt="Voice Agent architecture with guardrails, tools, and LLM-as-a-judge scoring">
-      <div class="demo-cap"><strong>Architecture:</strong> Realtime voice agent with text guardrails, tools, and post-session scoring.</div>
+      <div class="demo-img-cap" data-i18n="demo-cap-1">Architecture overview</div>
     </button>
-    <button class="demo-shot" type="button" data-img="images/voice-agent-2.png" data-title="Voice Agent Refactor Result">
-      <img src="images/voice-agent-2.png" alt="Voice Agent refactor direction and error-rate change analysis">
-      <div class="demo-cap"><strong>Refactor result:</strong> Prompt-based flow evolved into modular tool calling with measurable error-rate reduction.</div>
+    <button class="demo-img-btn" type="button" data-img="images/voice-agent-2.png" data-title="Voice Agent Refactor Result">
+      <img src="images/voice-agent-2.png" alt="Voice Agent refactor result and error-rate change">
+      <div class="demo-img-cap" data-i18n="demo-cap-2">Refactor result</div>
     </button>
   </div>
 </section>
 
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <span class="sec-label" data-i18n="sec-pub">Publications</span>
+  <div class="item-list">
+    <a class="item" href="https://www.sciencedirect.com/science/article/abs/pii/S1568494621007778" target="_blank" rel="noopener">
+      <span class="item-title">Simultaneous feature and instance selection in big noisy data using memetic variable neighborhood search</span>
+      <span class="item-desc">Applied Soft Computing · 2021</span>
+    </a>
+    <a class="item" href="https://ieeexplore.ieee.org/document/8972199" target="_blank" rel="noopener">
+      <span class="item-title">A hybrid memetic algorithm for simultaneously selecting features and instances in big industrial IoT data for predictive maintenance</span>
+      <span class="item-desc">IEEE INDIN 2019</span>
+    </a>
+    <a class="item" href="https://ieeexplore.ieee.org/document/8194904" target="_blank" rel="noopener">
+      <span class="item-title">Optimal charging control of energy storage and electric vehicle of an individual in the Internet of energy with energy trading</span>
+      <span class="item-desc">IEEE Transactions on Industrial Informatics · 2017</span>
+    </a>
+  </div>
+</section>
+
+<!-- MORE / CONTACT -->
+<section id="contact">
+  <span class="sec-label" data-i18n="sec-more">More</span>
+  <p class="bio" data-i18n-html="contact-bio">
+    Reach me at <a href="mailto:gingoooo.tw@gmail.com">gingoooo.tw@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" rel="noopener">LinkedIn</a>. Open to onsite, hybrid, and remote opportunities.
+  </p>
+</section>
+
+  <footer>
+    © ChihChi Kuo 2025 – <span id="cy"></span> · <a href="mailto:gingoooo.tw@gmail.com" data-i18n="footer-feedback">意見回饋</a>
+  </footer>
+
+</main>
+
+<!-- VIDEO MODAL -->
 <div class="modal" id="videoModal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-label="AI Voice Agent Demo video">
-    <div class="modal-bar">
-      <div class="modal-title">voice_agent_demo.youtube</div>
+    <div class="modal-head">
+      <span class="modal-head-title" data-i18n="demo-title">AI Voice Agent Demo</span>
       <button class="modal-close" type="button" id="closeVideo" aria-label="Close video">×</button>
     </div>
     <div class="modal-video">
       <iframe id="videoFrame" title="AI Voice Agent Demo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <div class="modal-fallback">If the embedded player is blocked, <a href="https://www.youtube.com/watch?v=zWMwcYJtuks" target="_blank" rel="noopener">watch it on YouTube</a>.</div>
+    <div class="modal-note" data-i18n-html="video-note">If the embedded player is blocked, <a href="https://www.youtube.com/watch?v=zWMwcYJtuks" target="_blank" rel="noopener">watch it on YouTube</a>.</div>
   </div>
 </div>
 
+<!-- IMAGE MODAL -->
 <div class="modal" id="imageModal" aria-hidden="true">
-  <div class="modal-img-card" role="dialog" aria-modal="true" aria-label="Voice Agent project image">
-    <div class="modal-bar">
-      <div class="modal-title" id="imageModalTitle">voice_agent_image.png</div>
+  <div class="modal-img-card" role="dialog" aria-modal="true" aria-label="Project image">
+    <div class="modal-head">
+      <span class="modal-head-title" id="imageModalTitle">image</span>
       <button class="modal-close" type="button" id="closeImage" aria-label="Close image">×</button>
     </div>
     <div class="modal-img-wrap"><img id="modalImage" src="" alt=""></div>
   </div>
 </div>
 
+<!-- PROJECT MODAL -->
 <div class="modal" id="projModal" aria-hidden="true">
-  <div class="proj-modal" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
-    <div class="modal-bar">
-      <div class="modal-title" id="projModalTitle">project_detail</div>
+  <div class="proj-modal-card" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
+    <div class="modal-head">
+      <span class="modal-head-title" id="projModalTitle">project</span>
       <button class="modal-close" type="button" id="closeProjModal" aria-label="Close">×</button>
     </div>
     <div class="proj-modal-body" id="projModalBody"></div>
   </div>
 </div>
 
-<!-- PUBLICATIONS -->
-<section id="publications" class="sec sec-alt">
-  <div class="sec-cmt"><span>##</span> 04 — publications/</div>
-  <h2 class="sec-h">Publications &amp; Research</h2>
-  <div class="vid-grid">
-    <div>
-      <div class="vmeta">
-        <div class="vmi"><div class="vmi-l">// education</div><div class="vmi-v g">National Yang Ming Chiao Tung University</div></div>
-        <div class="vmi"><div class="vmi-l">// degree</div><div class="vmi-v">M.S. Industrial Engineering and Management</div></div>
-        <div class="vmi"><div class="vmi-l">// research focus</div><div class="vmi-v sm">Feature selection, instance selection, noisy big data, industrial IoT, predictive maintenance, and memetic variable neighborhood search.</div></div>
-      </div>
-      <div class="outblock">
-        <div class="obl"><span class="p">$ </span><span class="cmd">grep -R "publication" ./profile</span></div>
-        <div class="obl cg" style="margin-top:4px;">✓ 3 research publications found</div>
-        <div class="obl cm">Applied Soft Computing · IEEE INDIN 2019 · IEEE TII</div>
-      </div>
-    </div>
-    <div>
-      <div class="proj-list">
-        <a href="https://www.sciencedirect.com/science/article/abs/pii/S1568494621007778" target="_blank" class="proj">
-          <div class="pidx">01</div>
-          <div><div class="pname">Simultaneous feature and instance selection in big noisy data using memetic variable neighborhood search <span class="ptag">Journal</span></div><div class="pdesc">Applied Soft Computing · 2021年8月24日</div><div class="tags"><span class="stag">Big Noisy Data</span><span class="stag">Feature Selection</span><span class="stag">Instance Selection</span><span class="stag">Memetic VNS</span></div></div>
-          <div class="plink">2021</div>
-        </a>
-        <a href="https://ieeexplore.ieee.org/document/8972199" target="_blank" class="proj">
-          <div class="pidx">02</div>
-          <div><div class="pname">A hybrid memetic algorithm for simultaneously selecting features and instances in big industrial IoT data for predictive maintenance. <span class="ptag">IEEE</span></div><div class="pdesc">In Proc. of 2019 IEEE International Conference on Industrial Informatics (INDIN 2019) · 2019年7月1日</div><div class="tags"><span class="stag">Industrial IoT</span><span class="stag">Predictive Maintenance</span><span class="stag">Optimization</span><span class="stag">INDIN 2019</span></div></div>
-          <div class="plink">2019</div>
-        </a>
-        <a href="https://ieeexplore.ieee.org/document/8194904" target="_blank" class="proj">
-          <div class="pidx">03</div>
-          <div><div class="pname">Optimal charging control of energy storage and electric vehicle of an individual in the Internet of energy with energy trading. <span class="ptag">IEEE</span></div><div class="pdesc">IEEE Transactions on Industrial Informatics · 2017年12月13日</div><div class="tags"><span class="stag">Energy Storage</span><span class="stag">Electric Vehicle</span><span class="stag">Internet of Energy</span><span class="stag">Energy Trading</span></div></div>
-          <div class="plink">2017</div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="sec">
-  <div class="sec-cmt"><span>##</span> 04 — contact.sh</div>
-  <h2 class="sec-h">Get in Touch</h2>
-  <div class="contact-grid">
-    <div>
-      <div class="cform">
-        <div class="cf-bar">
-          <div class="wdots"><div class="wd wd1"></div><div class="wd wd2"></div><div class="wd wd3"></div></div>
-          <span>new_message.sh</span>
-        </div>
-        <div class="cf-body">
-          <div class="field"><div class="flabel">// name</div><div class="fval">ChihChi Kuo · 郭致齊</div></div>
-          <div class="field"><div class="flabel">// role</div><div class="fval">AI Engineer | Data Scientist Engineer</div></div>
-          <div class="field"><div class="flabel">// location</div><div class="fval">Taipei, Taiwan</div></div>
-          <a href="mailto:juice1209.iem06g@nctu.edu.tw" class="sbtn"><span>→</span> send_message.sh</a>
-        </div>
-      </div>
-      <div class="outblock" style="margin-top:1rem;">
-        <div class="obl cm">Open to: <span class="cc">onsite · hybrid · remote</span></div>
-        <div class="obl cm">Focus: <span class="cg">AI service development · Agent systems · LLM evaluation</span></div>
-      </div>
-    </div>
-    <div class="clinks">
-      <a href="mailto:juice1209.iem06g@nctu.edu.tw" class="clink">
-        <div class="cl-left"><div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div><span class="cl-key">EMAIL</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="cl-val">juice1209.iem06g@nctu.edu.tw</span><span class="cl-arr">→</span></div>
-      </a>
-      <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" class="clink" target="_blank">
-        <div class="cl-left"><div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><span class="cl-key">LINKEDIN</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="cl-val">/in/chihchi-kuo-1111491b2</span><span class="cl-arr">→</span></div>
-      </a>
-      <a href="#projects" class="clink">
-        <div class="cl-left"><div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v4H3V3zm0 7h18v4H3v-4zm0 7h18v4H3v-4z"/></svg></div><span class="cl-key">WORK</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="cl-val">Selected AI projects</span><span class="cl-arr">→</span></div>
-      </a>
-      <a href="#publications" class="clink">
-        <div class="cl-left"><div class="cl-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="cl-key">PUBLICATIONS</span></div>
-        <div style="display:flex;align-items:center;gap:10px;"><span class="cl-val">Research work</span><span class="cl-arr">→</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>chihchi@portfolio:~ $ <span style="color:var(--green);">exit 0</span></span>
-  <div class="fstatus"><div class="sdot"></div>online · 2026</div>
-  <span></span>
-</footer>
-
 <script>
-const cur = document.getElementById('cur');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top  = e.clientY + 'px';
+/* ── TRANSLATIONS ── */
+const T = {
+  en: {
+    'h-role':      'AI Engineer · Data Scientist · Taipei',
+    'sec-today':   'Today',
+    'bio-1':       'I\'m an AI Engineer at a leading financial institution in Taipei, turning fuzzy enterprise AI ideas into <strong>validated, deployable services</strong>. My work spans requirement clarification, Agent system design, LLM evaluation, and production deployment.',
+    'bio-2':       'Currently focused on <strong>Agentic AI</strong>, <strong>LLM evaluation</strong>, and <strong>RAG pipeline optimization</strong>. Before that: OCR, time-series anomaly detection, AIOps, and ML API infrastructure. 7+ years in data and AI.',
+    'exp-0-role':  'Data Scientist Engineer',
+    'exp-0-sub':   'A Leading Financial Institution · AI / LLM / Agent applications',
+    'exp-1-role':  'Data Engineer',
+    'exp-1-sub':   'A Leading Financial Institution · ML services, OCR, AIOps, internal LLM tooling',
+    'exp-2-role':  'Data Scientist',
+    'exp-2-sub':   'A Manufacturing Corporation · anomaly detection and regression modeling',
+    'exp-3-role':  'M.S. Industrial Engineering',
+    'exp-3-sub':   'National Yang Ming Chiao Tung University',
+    'sec-work':    'Work',
+    'proj-5-title':'Insurance Product AI Agent',
+    'proj-5-desc': 'RAG pipeline for insurance policy Q&A — improved recall@15 from 0.80 to 0.98 without latency increase.',
+    'proj-0-title':'AI Voice Agent',
+    'proj-0-desc': 'Voice agent MVP for inbound premium-service calls — reduced unstable dialogue rate from 16.4% to 8.6%.',
+    'proj-1-title':'Internal LLM Coding Assistant',
+    'proj-1-desc': 'Self-hosted LLM service with VS Code extension for IT teams, reducing sensitive data leakage risk.',
+    'proj-2-title':'OCR Key Information Extraction',
+    'proj-2-desc': 'Improved business document OCR accuracy from 81% to 93% in production.',
+    'proj-3-title':'AIOps & Anomaly Detection',
+    'proj-3-desc': 'Time-series anomaly detection for server metrics and industrial scenarios — 20-minute earlier alerts vs. rule-based systems.',
+    'proj-4-title':'Production ML API Deployment',
+    'proj-4-desc': 'Designed and deployed 10+ real-time and batch ML models as internal APIs, with monitoring and Docker workflows.',
+    'sec-demo':    'Demo',
+    'demo-title':  'AI Voice Agent Demo',
+    'demo-sub':    'OpenAI Realtime API · inbound premium-service call scenario',
+    'demo-cap-1':  'Architecture overview',
+    'demo-cap-2':  'Refactor result',
+    'sec-pub':     'Publications',
+    'sec-more':    'More',
+    'contact-bio': 'Reach me at <a href="mailto:gingoooo.tw@gmail.com">gingoooo.tw@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" rel="noopener">LinkedIn</a>. Open to onsite, hybrid, and remote opportunities.',
+    'video-note':  'If the embedded player is blocked, <a href="https://www.youtube.com/watch?v=zWMwcYJtuks" target="_blank" rel="noopener">watch it on YouTube</a>.',
+    'pm-overview': 'Overview',
+    'pm-approach': 'Technical Approach',
+    'pm-results':  'Results',
+    'pm-stack':    'Stack',
+    'pm-soon':          'Details coming soon.',
+    'exp-now':          'Now',
+    'footer-feedback':  'Feedback',
+    'pm-screenshots':   'Screenshots',
+  },
+  zh: {
+    'h-role':      'AI 工程師 · 資料科學家 · 台北',
+    'sec-today':   '關於',
+    'bio-1':       '我是任職於台北某大型金融機構的 AI 工程師，專注於將企業 AI 概念從模糊的探索階段，落地為<strong>可驗證、可部署的服務</strong>。工作涵蓋需求釐清、Agent 系統設計、LLM 評估到上線部署。',
+    'bio-2':       '目前專注於 <strong>Agentic AI</strong>、<strong>LLM 評估</strong> 與 <strong>RAG 系統優化</strong>。過去曾建立 OCR、時間序列異常偵測、AIOps 與 ML API 部署系統。7 年以上資料與 AI 經驗。',
+    'exp-0-role':  '資料科學工程師',
+    'exp-0-sub':   '某大型金融機構 · AI / LLM / Agent 應用',
+    'exp-1-role':  '資料工程師',
+    'exp-1-sub':   '某大型金融機構 · ML 服務、OCR、AIOps、內部 LLM 工具',
+    'exp-2-role':  '資料科學家',
+    'exp-2-sub':   '某製造業公司 · 異常偵測與迴歸模型',
+    'exp-3-role':  '工業工程碩士',
+    'exp-3-sub':   '國立陽明交通大學',
+    'sec-work':    '專案',
+    'proj-5-title':'保險商品 Agent',
+    'proj-5-desc': '保險條款問答 Agent — recall@15 從 0.80 提升至 0.98，延遲不增加。',
+    'proj-0-title':'AI 語音助理',
+    'proj-0-desc': '來電語音助理 — 不穩定對話率從 16.4% 降至 8.6%。',
+    'proj-1-title':'內部 LLM 程式助理',
+    'proj-1-desc': '自架 LLM 服務搭配 VS Code 擴充，提供 IT 團隊程式輔助，降低敏感資料外洩風險。',
+    'proj-2-title':'OCR 關鍵資訊擷取',
+    'proj-2-desc': '提升商業文件 OCR 正確率，從 81% 到 93%。',
+    'proj-3-title':'AIOps 與異常偵測',
+    'proj-3-desc': '伺服器指標與工業場景時間序列異常偵測 — 比規則型系統提早 20 分鐘告警。',
+    'proj-4-title':'ML API 生產部署',
+    'proj-4-desc': '設計並部署 10+ 個即時與批次 ML 模型，建立監控與 Docker 部署流程。',
+    'sec-demo':    'Demo',
+    'demo-title':  'AI 語音助理 Demo',
+    'demo-sub':    'OpenAI Realtime API · 保費服務來電場景',
+    'demo-cap-1':  '架構總覽',
+    'demo-cap-2':  '重構成果',
+    'sec-pub':     '學術論文',
+    'sec-more':    '聯絡',
+    'contact-bio': '歡迎透過 <a href="mailto:gingoooo.tw@gmail.com">gingoooo.tw@gmail.com</a> 聯絡我，或在 <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" rel="noopener">LinkedIn</a> 上連結。接受現場、混合與遠端工作機會。',
+    'video-note':  '若嵌入播放器受阻，請直接 <a href="https://www.youtube.com/watch?v=zWMwcYJtuks" target="_blank" rel="noopener">前往 YouTube 觀看</a>。',
+    'pm-overview': '專案概述',
+    'pm-approach': '技術方法',
+    'pm-results':  '成果',
+    'pm-stack':    '技術棧',
+    'pm-soon':          '詳細內容即將補充。',
+    'exp-now':          '至今',
+    'footer-feedback':  '意見回饋',
+    'pm-screenshots':   '截圖',
+  }
+};
+
+let lang = 'zh';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l === 'zh' ? 'zh-TW' : 'en';
+  document.getElementById('lang-toggle').textContent = l === 'zh' ? 'EN' : '中文';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[l][key] !== undefined) el.textContent = T[l][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (T[l][key] !== undefined) el.innerHTML = T[l][key];
+  });
+}
+
+document.getElementById('cy').textContent = new Date().getFullYear();
+setLang('zh');
+
+document.getElementById('lang-toggle').addEventListener('click', () => {
+  setLang(lang === 'en' ? 'zh' : 'en');
 });
 
+/* ── VIDEO MODAL ── */
 const videoModal = document.getElementById('videoModal');
 const videoFrame = document.getElementById('videoFrame');
-const openVideo = document.getElementById('openVideo');
+const openVideo  = document.getElementById('openVideo');
 const closeVideo = document.getElementById('closeVideo');
-const videoUrl = 'https://www.youtube.com/embed/zWMwcYJtuks?si=CKE_3ElRryDrN-r6&autoplay=1&rel=0';
+const videoUrl   = 'https://www.youtube.com/embed/zWMwcYJtuks?si=CKE_3ElRryDrN-r6&autoplay=1&rel=0';
 
-function openVideoModal(){
+function openVideoModal() {
   videoFrame.src = videoUrl;
   videoModal.classList.add('open');
   videoModal.setAttribute('aria-hidden', 'false');
 }
-function closeVideoModal(){
+function closeVideoModal() {
   videoModal.classList.remove('open');
   videoModal.setAttribute('aria-hidden', 'true');
   videoFrame.src = '';
 }
 openVideo?.addEventListener('click', openVideoModal);
 closeVideo?.addEventListener('click', closeVideoModal);
-videoModal?.addEventListener('click', e => {
-  if(e.target === videoModal) closeVideoModal();
-});
+videoModal?.addEventListener('click', e => { if (e.target === videoModal) closeVideoModal(); });
 
-const imageModal = document.getElementById('imageModal');
-const modalImage = document.getElementById('modalImage');
+/* ── IMAGE MODAL ── */
+const imageModal      = document.getElementById('imageModal');
+const modalImage      = document.getElementById('modalImage');
 const imageModalTitle = document.getElementById('imageModalTitle');
-const closeImage = document.getElementById('closeImage');
+const closeImage      = document.getElementById('closeImage');
 
-document.querySelectorAll('.demo-shot').forEach(btn => {
-  btn.addEventListener('click', () => {
-    modalImage.src = btn.dataset.img;
-    modalImage.alt = btn.querySelector('img')?.alt || '';
-    imageModalTitle.textContent = btn.dataset.title || 'voice_agent_image.png';
-    imageModal.classList.add('open');
-    imageModal.setAttribute('aria-hidden', 'false');
-  });
-});
-function closeImageModal(){
+function openImageModal(src, alt, title) {
+  modalImage.src = src;
+  modalImage.alt = alt || '';
+  imageModalTitle.textContent = title || 'image';
+  imageModal.classList.add('open');
+  imageModal.setAttribute('aria-hidden', 'false');
+}
+function closeImageModal() {
   imageModal.classList.remove('open');
   imageModal.setAttribute('aria-hidden', 'true');
   modalImage.src = '';
 }
+document.querySelectorAll('.demo-img-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    openImageModal(btn.dataset.img, btn.querySelector('img')?.alt || '', btn.dataset.title);
+  });
+});
 closeImage?.addEventListener('click', closeImageModal);
-imageModal?.addEventListener('click', e => {
-  if(e.target === imageModal) closeImageModal();
-});
+imageModal?.addEventListener('click', e => { if (e.target === imageModal) closeImageModal(); });
 
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){
-    closeVideoModal();
-    closeImageModal();
-    closeProjModalFn();
-  }
-});
-
+/* ── PROJECT MODAL ── */
 const PROJECTS = [
   {
-    idx: '01', title: 'AI Voice Agent', tag: 'Agent',
-    overview: 'I led the development of an AI Voice Agent MVP for insurance customer-service scenarios, focusing on inbound premium-related calls. The goal was not to build a chatbot that freely answers insurance questions — in a regulated customer-service environment, the agent must first clarify the customer\'s intent, avoid unsupported claims, and route the conversation to the correct service flow.',
-    approach: `<div style="margin-bottom:1.1rem">
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Core Challenges</div>
-  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--white);font-weight:400">Customers describe issues vaguely</strong> — Real callers often use non-standard wording, incomplete sentences, or multiple intents in one request.</div>
-  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--white);font-weight:400">Voice agents must control risk</strong> — The agent cannot ask for sensitive information, leak system behavior, mention competitors inappropriately, or make unsupported commitments.</div>
-  <div><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--white);font-weight:400">Dialogue quality must be measurable</strong> — The team needed a way to evaluate task completion, flow stability, empathy, and customer experience beyond whether the agent simply replies.</div>
+    idx: '01',
+    title: { en: 'AI Voice Agent', zh: 'AI 語音助理' },
+    tag: 'Agent',
+    overview: {
+      en: 'I led the development of an AI Voice Agent MVP for insurance customer-service scenarios, focusing on inbound premium-related calls. The goal was not to build a chatbot that freely answers insurance questions — in a regulated customer-service environment, the agent must first clarify the customer\'s intent, avoid unsupported claims, and route the conversation to the correct service flow.',
+      zh: '我主導了一個保險客服場景的 AI 語音助理 MVP 開發，聚焦於保費相關來電服務。目標不是建立一個能自由回答保險問題的聊天機器人——在受監管的客服環境中，助理必須先釐清客戶意圖、避免未經授權的承諾，並將對話引導至正確的服務流程。'
+    },
+    approach: {
+      en: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Core Challenges</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">Customers describe issues vaguely</strong> — Real callers often use non-standard wording, incomplete sentences, or multiple intents in one request.</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">Voice agents must control risk</strong> — The agent cannot ask for sensitive information, leak system behavior, mention competitors inappropriately, or make unsupported commitments.</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">Dialogue quality must be measurable</strong> — The team needed a way to evaluate task completion, flow stability, empathy, and customer experience beyond whether the agent simply replies.</div>
 </div>
 <div style="margin-bottom:1.1rem">
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Key Design Decisions</div>
-  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Key Design Decisions</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
     <li>OpenAI Realtime API for low-latency speech interaction</li>
     <li>State machine to manage six dialogue stages</li>
     <li>Text-based LLM tool call for intent recognition (better accuracy than inline prompt)</li>
@@ -686,92 +638,162 @@ const PROJECTS = [
   </ul>
 </div>
 <div style="margin-bottom:1.1rem">
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Guardrail Layers</div>
-  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Guardrail Layers</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
     <li>Customer transcript checks for sensitive / PII information</li>
     <li>Prompt-level topic and behavior control</li>
     <li>AI response transcript checks via regex + LLM semantic judgment</li>
     <li>Real-time interruption and response rewriting when risky output is detected</li>
   </ul>
-  <div style="margin-top:.65rem">L2 output guard evaluated across five risk categories — Privacy, Security, Safety, Compliance, Brand — achieving a 100% pass rate on a 300-case test set.</div>
+  <div style="margin-top:.65rem;font-size:14px;color:var(--muted);">L2 output guard evaluated across five risk categories — Privacy, Security, Safety, Compliance, Brand — achieving a 100% pass rate on a 300-case test set.</div>
 </div>
 <div>
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Per-call Evaluation Metrics</div>
-  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Per-call Evaluation Metrics</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
     <li>Conversation naturalness &amp; empathy</li>
     <li>Task completion &amp; intent-identification accuracy</li>
     <li>Role-boundary control &amp; topic consistency</li>
     <li>Customer satisfaction &amp; engagement</li>
   </ul>
 </div>`,
+      zh: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">核心挑戰</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">客戶描述問題模糊</strong> — 真實來電客戶常使用非標準措辭、不完整句子，或在一次請求中夾雜多個意圖。</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">語音助理必須控制風險</strong> — 助理不能詢問敏感資訊、洩漏系統行為、不當提及競爭對手，或做出未經授權的承諾。</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">對話品質必須可量測</strong> — 團隊需要一套評估方法，涵蓋任務完成度、流程穩定性、同理心與客戶體驗，而不僅是判斷助理是否有回應。</div>
+</div>
+<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">關鍵設計決策</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
+    <li>OpenAI Realtime API 實現低延遲語音互動</li>
+    <li>狀態機管理六個對話階段</li>
+    <li>以文字型 LLM 工具呼叫進行意圖識別（比內嵌 prompt 準確度更高）</li>
+    <li>工具呼叫用於對話狀態更新與後續分類</li>
+    <li>對客戶輸入與 AI 輸出雙向進行 PII 遮蔽與分層護欄</li>
+    <li>每次對話結束後由 LLM-as-a-judge 進行評分</li>
+  </ul>
+</div>
+<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">護欄層次</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
+    <li>客戶逐字稿的敏感資訊 / PII 檢查</li>
+    <li>Prompt 層級的主題與行為控制</li>
+    <li>AI 回應逐字稿透過正規表示式 + LLM 語意判斷進行檢查</li>
+    <li>偵測到風險輸出時即時中斷並重寫回應</li>
+  </ul>
+  <div style="margin-top:.65rem;font-size:14px;color:var(--muted);">L2 輸出護欄跨五個風險類別評估——隱私、安全、安全性、合規、品牌——在 300 筆測試集上達到 100% 通過率。</div>
+</div>
+<div>
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">每通電話評估指標</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.3rem;font-size:14px;color:var(--muted);">
+    <li>對話自然度與同理心</li>
+    <li>任務完成度與意圖識別準確率</li>
+    <li>角色邊界控制與主題一致性</li>
+    <li>客戶滿意度與互動體驗</li>
+  </ul>
+</div>`
+    },
     metrics: [
-      { v: '8.6%', l: '// unstable dialogue rate (↓ from 16.4%)' },
-      { v: '100%', l: '// L2 guardrail pass rate · 300 cases' }
+      { v: '8.6%', l: { en: 'unstable dialogue rate (↓ from 16.4%)', zh: '不穩定對話率（↓ 從 16.4%）' } },
+      { v: '100%', l: { en: 'L2 guardrail pass rate · 300 cases',   zh: 'L2 護欄通過率 · 300 筆測試' } }
     ],
     stack: ['OpenAI Realtime API', 'State Machine', 'Tool Calling', 'Guardrails', 'LLM as a judge', 'WebSocket'],
-    links: [
-      { label: '→ Live Demo', href: '#voice-agent', internal: true }
-    ]
+    links: [{ label: { en: '↓ View Demo', zh: '↓ 觀看 Demo' }, href: '#demo', internal: true }]
   },
   {
-    idx: '02', title: 'Internal LLM Coding Assistant', tag: 'Deploy',
-    overview: 'Built an internal large language model service with a VS Code extension to provide GitHub Copilot-like assistance for IT teams while reducing risks around sensitive data and personal information leakage.',
+    idx: '02',
+    title: { en: 'Internal LLM Coding Assistant', zh: '內部 LLM 程式助理' },
+    tag: 'Deploy',
+    overview: {
+      en: 'Built an internal large language model service with a VS Code extension to provide GitHub Copilot-like assistance for IT teams while reducing risks around sensitive data and personal information leakage.',
+      zh: '建立了一套內部大型語言模型服務，搭配 VS Code 擴充功能，為 IT 團隊提供類似 GitHub Copilot 的程式輔助，同時降低敏感資料與個人資訊外洩的風險。'
+    },
     approach: null,
     metrics: [],
     stack: ['LLM Deployment', 'Self Hosted AI', 'HuggingFace'],
-    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+    links: [{ label: { en: '→ LinkedIn', zh: '→ LinkedIn' }, href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
   },
   {
-    idx: '03', title: 'OCR Key Information Extraction', tag: 'CV',
-    overview: 'Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.',
+    idx: '03',
+    title: { en: 'OCR Key Information Extraction', zh: 'OCR 關鍵資訊擷取' },
+    tag: 'CV',
+    overview: {
+      en: 'Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.',
+      zh: '建立並改善商業文件關鍵資訊擷取的 OCR 模型，將線上模型正確率從 81% 提升至 93%。'
+    },
     approach: null,
-    metrics: [
-      { v: '93%', l: '// model accuracy (↑ from 81%)' }
-    ],
+    metrics: [{ v: '93%', l: { en: 'model accuracy (↑ from 81%)', zh: '模型正確率（↑ 從 81%）' } }],
     stack: ['OCR', 'Computer Vision', 'Model Optimization', 'PaddleOCR'],
-    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+    links: [{ label: { en: '→ LinkedIn', zh: '→ LinkedIn' }, href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
   },
   {
-    idx: '04', title: 'AIOps & Time-Series Anomaly Detection', tag: 'MLOps',
-    overview: 'Developed anomaly detection algorithms for life-insurance core system server metrics, cement plants, and battery factory scenarios, including algorithms that alerted operators 20 minutes earlier than existing rules of thumb.',
+    idx: '04',
+    title: { en: 'AIOps & Time-Series Anomaly Detection', zh: 'AIOps 與時間序列異常偵測' },
+    tag: 'MLOps',
+    overview: {
+      en: 'Developed anomaly detection algorithms for life-insurance core system server metrics, cement plants, and battery factory scenarios, including algorithms that alerted operators 20 minutes earlier than existing rules of thumb.',
+      zh: '針對壽險核心系統伺服器指標、水泥廠與電池廠場景，開發時間序列異常偵測演算法，其中部分演算法比現有規則提早 20 分鐘發出告警。'
+    },
     approach: null,
-    metrics: [
-      { v: '20 min', l: '// earlier alert than existing rules' }
-    ],
+    metrics: [{ v: '20 min', l: { en: 'earlier alert than existing rules', zh: '比規則型系統提早告警' } }],
     stack: ['AIOps', 'Time Series', 'Anomaly Detection', 'Preventive Maintenance'],
-    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+    links: [{ label: { en: '→ LinkedIn', zh: '→ LinkedIn' }, href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
   },
   {
-    idx: '05', title: 'Production ML API Deployment', tag: 'Deploy',
-    overview: 'Designed ML model systems including code structure, Docker containerization, deployment workflow, automated monitoring, and information visualization. Deployed 10+ real-time and batch ML models as APIs for internal systems.',
+    idx: '05',
+    title: { en: 'Production ML API Deployment', zh: 'ML API 生產部署' },
+    tag: 'Deploy',
+    overview: {
+      en: 'Designed ML model systems including code structure, Docker containerization, deployment workflow, automated monitoring, and information visualization. Deployed 10+ real-time and batch ML models as APIs for internal systems.',
+      zh: '設計 ML 模型系統架構，包含程式碼結構、Docker 容器化、部署流程、自動化監控與資訊視覺化。為內部系統部署超過 10 個即時與批次 ML 模型 API。'
+    },
     approach: null,
-    metrics: [
-      { v: '10+', l: '// ML models in production' }
-    ],
+    metrics: [{ v: '10+', l: { en: 'ML models in production', zh: '生產環境 ML 模型數量' } }],
     stack: ['Docker', 'Flask API', 'Monitoring'],
-    links: [{ label: '→ LinkedIn', href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
+    links: [{ label: { en: '→ LinkedIn', zh: '→ LinkedIn' }, href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
   },
   {
-    idx: '★', title: 'Insurance Product AI Agent', tag: 'Agent',
-    overview: 'We built an AI-powered QA system for insurance policy terms to address a core operational pain point — customers frequently contact agents with complex product questions that agents cannot resolve independently, requiring escalation to the specialist Product Division for clarification and response. This system accelerates that process by handling policy-related inquiries directly, reducing escalation volume and response time.',
-    approach: `<div style="margin-bottom:1.1rem">
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Core Challenges</div>
-  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--white);font-weight:400">Legal and financial risk in generated responses</strong> — Any answer touching on claims or coverage interpretation may directly impact company liability, requiring strict content controls on generated output.</div>
-  <div style="margin-bottom:.6rem"><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--white);font-weight:400">Precise and safety-aware input filtering</strong> — The system must reliably block non-insurance queries while handling edge cases such as self-harm-related inputs through an appropriate safety response flow, rather than a simple rejection.</div>
-  <div><span style="color:var(--cyan);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--white);font-weight:400">Tension between explainability and response latency</strong> — Surfacing the model's reasoning improves auditability and trust, but increases response time. A middle-ground approach — summarized reasoning steps — is needed to balance transparency with efficiency.</div>
+    idx: '★',
+    title: { en: 'Insurance Product AI Agent', zh: '保險商品 Agent' },
+    tag: 'Agent',
+    overview: {
+      en: 'We built an AI-powered QA system for insurance policy terms to address a core operational pain point — customers frequently contact agents with complex product questions that agents cannot resolve independently, requiring escalation to the specialist Product Division for clarification and response. This system accelerates that process by handling policy-related inquiries directly, reducing escalation volume and response time.',
+      zh: '我們建立了一套保險商品條款 AI 問答系統，解決核心業務痛點——客戶時常向業務員詢問無法當場回答的複雜商品問題，必須升級至產品部門才能處理。此系統直接回應保單相關查詢，減少升級案量與回覆時間。'
+    },
+    approach: {
+      en: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Core Challenges</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">Legal and financial risk in generated responses</strong> — Any answer touching on claims or coverage interpretation may directly impact company liability, requiring strict content controls on generated output.</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">Precise and safety-aware input filtering</strong> — The system must reliably block non-insurance queries while handling edge cases such as self-harm-related inputs through an appropriate safety response flow, rather than a simple rejection.</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">Tension between explainability and response latency</strong> — Surfacing the model's reasoning improves auditability and trust, but increases response time. A middle-ground approach — summarized reasoning steps — is needed to balance transparency with efficiency.</div>
 </div>
 <div>
-  <div style="color:var(--white);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem;">Key Design Decisions</div>
-  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;">
-    <li><strong style="color:var(--white);font-weight:400">Multi-stage RAG pipeline with per-stage accuracy validation</strong> — rather than tuning solely on final answer quality, each stage (retrieval, reranking, generation) is independently measured to localize where degradation originates.</li>
-    <li><strong style="color:var(--white);font-weight:400">Reflective RAG for self-assessed retrieval relevance and dynamic re-querying</strong> — addresses cases where initial retrieval fails silently, surfacing low-confidence retrievals for re-query before generation rather than letting weak context propagate downstream.</li>
-    <li><strong style="color:var(--white);font-weight:400">Parent Document Retriever to decouple indexing granularity from retrieval granularity</strong> — small chunks are embedded for precise semantic matching, but retrieval surfaces the full parent passage to preserve clause context. This directly addresses a failure mode where semantically matched fragments lack the cross-referential context needed for accurate coverage interpretation.</li>
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Key Design Decisions</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;font-size:14px;color:var(--muted);">
+    <li><strong style="color:var(--text);font-weight:500">Multi-stage RAG pipeline with per-stage accuracy validation</strong> — rather than tuning solely on final answer quality, each stage (retrieval, reranking, generation) is independently measured to localize where degradation originates.</li>
+    <li><strong style="color:var(--text);font-weight:500">Reflective RAG for self-assessed retrieval relevance and dynamic re-querying</strong> — addresses cases where initial retrieval fails silently, surfacing low-confidence retrievals for re-query before generation rather than letting weak context propagate downstream.</li>
+    <li><strong style="color:var(--text);font-weight:500">Parent Document Retriever to decouple indexing granularity from retrieval granularity</strong> — small chunks are embedded for precise semantic matching, but retrieval surfaces the full parent passage to preserve clause context.</li>
   </ul>
 </div>`,
+      zh: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">核心挑戰</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">生成回答的法律與財務風險</strong> — 任何涉及理賠或保障解釋的回答都可能直接影響公司責任，需要對生成內容進行嚴格管控。</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">精準且具安全意識的輸入過濾</strong> — 系統必須可靠地攔截非保險相關查詢，同時對自傷相關輸入等邊緣案例，提供適當的安全回應流程，而非直接拒絕。</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">可解釋性與回應延遲的取捨</strong> — 呈現模型推理過程可提升可稽核性與信任感，但會增加回應時間。需要折衷方案——以摘要化的推理步驟，在透明度與效率之間取得平衡。</div>
+</div>
+<div>
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">關鍵設計決策</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;font-size:14px;color:var(--muted);">
+    <li><strong style="color:var(--text);font-weight:500">多階段 RAG 搭配逐階段準確度驗證</strong> — 不只調整最終答案品質，而是獨立衡量各階段（檢索、重排序、生成）以定位效能下降的來源。</li>
+    <li><strong style="color:var(--text);font-weight:500">反思型 RAG 進行自評檢索相關性與動態重新查詢</strong> — 處理初始檢索靜默失敗的情況，在生成前將低信心檢索結果浮現並重新查詢，避免薄弱的上下文流入生成階段。</li>
+    <li><strong style="color:var(--text);font-weight:500">Parent Document Retriever 解耦索引顆粒度與檢索顆粒度</strong> — 小段落用於精確語意匹配，但檢索時回傳完整父段落以保留條款上下文，直接解決了語意匹配到的片段缺乏跨引用上下文的失敗模式。</li>
+  </ul>
+</div>`
+    },
     metrics: [
-      { v: '0.80 → 0.98', l: '// recall@15 improvement' },
-      { v: '2026 Q1', l: '// planned launch window', color: 'var(--yellow)' },
-      { v: 'stable', l: '// no latency increase', color: 'var(--blue)' }
+      { v: '0.80 → 0.98', l: { en: 'recall@15 improvement',     zh: 'recall@15 提升' } },
+      { v: '2026 Q1',     l: { en: 'planned launch window',      zh: '預計上線時程' } },
+      { v: 'stable',      l: { en: 'no latency increase',        zh: '延遲未增加' } }
     ],
     stack: ['LLM', 'RAG', 'LLM Evaluation', 'LLM Guardrails', 'AI Agent', 'In-memory Database'],
     images: [
@@ -781,64 +803,66 @@ const PROJECTS = [
   }
 ];
 
-const projModal = document.getElementById('projModal');
-const projModalTitle = document.getElementById('projModalTitle');
-const projModalBody = document.getElementById('projModalBody');
+const projModal         = document.getElementById('projModal');
+const projModalTitle    = document.getElementById('projModalTitle');
+const projModalBody     = document.getElementById('projModalBody');
 const closeProjModalBtn = document.getElementById('closeProjModal');
 
 function buildProjModal(p) {
+  const l = lang;
+  const tl = T[l];
+
   const metricsHTML = p.metrics.length ? `
     <div class="pm-section">
-      <div class="pm-label">// results</div>
+      <div class="pm-label">${tl['pm-results']}</div>
       <div class="pm-metrics">${p.metrics.map(m => `
         <div class="pm-metric">
-          <div class="pm-metric-v" style="color:${m.color||'var(--green)'};">${m.v}</div>
-          <div class="pm-metric-l">${m.l}</div>
+          <div class="pm-metric-v">${m.v}</div>
+          <div class="pm-metric-l">${m.l[l]}</div>
         </div>`).join('')}
       </div>
     </div>` : '';
 
   const approachHTML = p.approach ? `
     <div class="pm-section">
-      <div class="pm-label">// technical approach</div>
-      <div class="pm-body">${p.approach}</div>
+      <div class="pm-label">${tl['pm-approach']}</div>
+      <div class="pm-body">${p.approach[l]}</div>
     </div>` : `
     <div class="pm-section">
-      <div class="pm-label">// technical approach</div>
-      <div class="pm-placeholder">// details coming soon...</div>
+      <div class="pm-label">${tl['pm-approach']}</div>
+      <div class="pm-body">${tl['pm-soon']}</div>
     </div>`;
 
   const imagesHTML = p.images?.length ? `
     <div class="pm-section">
-      <div class="pm-label">// screenshots</div>
+      <div class="pm-label">${tl['pm-screenshots']}</div>
       <div class="pm-images">${p.images.map(img => `
         <img src="${img.src}" alt="${img.alt}" data-img="${img.src}" data-title="${img.alt}">`).join('')}
       </div>
     </div>` : '';
 
   const linksHTML = p.links.length ? `
-    <div class="pm-links">${p.links.map(l => {
-      const ext = l.internal ? '' : ' target="_blank" rel="noopener"';
-      const cls = l.internal ? 'pm-link pm-link-int' : 'pm-link';
-      return `<a href="${l.href}"${ext} class="${cls}">${l.label}</a>`;
+    <div class="pm-links">${p.links.map(link => {
+      const ext = link.internal ? '' : ' target="_blank" rel="noopener"';
+      const cls = link.internal ? 'pm-link pm-link-int' : 'pm-link';
+      return `<a href="${link.href}"${ext} class="${cls}">${link.label[l]}</a>`;
     }).join('')}</div>` : '';
 
   projModalBody.innerHTML = `
-    <div style="margin-bottom:1.5rem;">
-      <span style="color:var(--prompt);font-size:12px;margin-right:.75rem;">${p.idx}</span>
-      <span style="font-size:17px;font-weight:500;color:var(--white);">${p.title}</span>
-      <span class="ptag" style="margin-left:.6rem;">${p.tag}</span>
+    <div>
+      <span class="pm-title">${p.title[l]}</span>
+      <span class="pm-tag">${p.tag}</span>
     </div>
     <div class="pm-section">
-      <div class="pm-label">// overview</div>
-      <div class="pm-body">${p.overview}</div>
+      <div class="pm-label">${tl['pm-overview']}</div>
+      <div class="pm-body">${p.overview[l]}</div>
     </div>
+    ${imagesHTML}
     ${approachHTML}
     ${metricsHTML}
-    ${imagesHTML}
     <div class="pm-section">
-      <div class="pm-label">// stack</div>
-      <div class="tags">${p.stack.map(s => `<span class="stag">${s}</span>`).join('')}</div>
+      <div class="pm-label">${tl['pm-stack']}</div>
+      <div class="pm-stack">${p.stack.map(s => `<span class="pm-stack-item">${s}</span>`).join('')}</div>
     </div>
     ${linksHTML}
   `;
@@ -847,24 +871,17 @@ function buildProjModal(p) {
     a.addEventListener('click', () => closeProjModalFn());
   });
   projModalBody.querySelectorAll('.pm-images img').forEach(img => {
-    img.addEventListener('click', () => {
-      modalImage.src = img.dataset.img;
-      modalImage.alt = img.dataset.title || '';
-      imageModalTitle.textContent = img.dataset.title || 'screenshot';
-      imageModal.classList.add('open');
-      imageModal.setAttribute('aria-hidden', 'false');
-    });
+    img.addEventListener('click', () => openImageModal(img.dataset.img, img.alt, img.dataset.title));
   });
 }
 
 function openProjModal(idx) {
   const p = PROJECTS[idx];
-  projModalTitle.textContent = `project_${p.idx}`;
+  projModalTitle.textContent = p.title[lang];
   buildProjModal(p);
   projModal.classList.add('open');
   projModal.setAttribute('aria-hidden', 'false');
 }
-
 function closeProjModalFn() {
   projModal.classList.remove('open');
   projModal.setAttribute('aria-hidden', 'true');
@@ -873,21 +890,19 @@ function closeProjModalFn() {
 document.querySelectorAll('[data-proj]').forEach(el => {
   el.addEventListener('click', () => openProjModal(+el.dataset.proj));
   el.addEventListener('keydown', e => {
-    if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProjModal(+el.dataset.proj); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProjModal(+el.dataset.proj); }
   });
 });
 closeProjModalBtn?.addEventListener('click', closeProjModalFn);
-projModal?.addEventListener('click', e => { if(e.target === projModal) closeProjModalFn(); });
-</script>
+projModal?.addEventListener('click', e => { if (e.target === projModal) closeProjModalFn(); });
 
-<nav id="mob-nav" aria-label="Mobile navigation">
-  <div class="mob-nav-inner">
-    <a href="#about">about</a>
-    <a href="#projects">work</a>
-    <a href="#voice-agent">demo</a>
-    <a href="#publications">pub</a>
-    <a href="#contact">contact</a>
-  </div>
-</nav>
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeVideoModal();
+    closeImageModal();
+    closeProjModalFn();
+  }
+});
+</script>
 </body>
 </html>
