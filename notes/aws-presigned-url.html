@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>AWS S3 Presigned URL — ChihChi Kuo</title>
+<meta name="description" content="AWS S3 Presigned URL 的運作原理、GET / PUT 用法與安全注意事項。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #fdfdfc;
+  --bg-hover: #F5F4F4;
+  --text:     #21201c;
+  --muted:    #63635e;
+  --border:   #e9e9e7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #111110;
+    --bg-hover: #191918;
+    --text:     #eeeeec;
+    --muted:    #9d9d99;
+    --border:   #2a2a28;
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:692px;
+  margin:0 auto;
+  padding:48px 24px 96px;
+}
+@media(min-width:640px){
+  .container{padding:128px 24px;}
+}
+
+header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:80px;
+}
+@media(min-width:640px){header{margin-bottom:128px;}}
+
+.h-back{
+  font-size:15px;color:var(--muted);text-decoration:none;
+  transition:color 0.12s;
+}
+.h-back:hover{color:var(--text);}
+
+#lang-toggle{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:13px;
+  cursor:pointer;
+  font-family:inherit;
+  transition:background 0.12s,color 0.12s,border-color 0.12s;
+}
+#lang-toggle:hover{background:var(--bg-hover);color:var(--text);border-color:var(--muted);}
+
+.note-header{margin-bottom:48px;}
+.note-meta{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  margin-bottom:8px;
+}
+.note-tag{
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 7px;
+  font-size:12px;color:var(--muted);
+}
+.note-title{
+  font-size:22px;font-weight:500;
+  color:var(--text);line-height:1.35;
+  margin-bottom:8px;
+}
+.note-summary{font-size:15px;color:var(--muted);line-height:1.7;}
+
+.prose{color:var(--muted);font-size:15px;line-height:1.8;}
+.prose h2{
+  font-size:15px;font-weight:500;
+  color:var(--text);
+  margin-top:40px;margin-bottom:12px;
+}
+.prose h3{
+  font-size:13px;font-weight:500;
+  color:var(--text);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-top:28px;margin-bottom:8px;
+}
+.prose p{margin-bottom:16px;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text);font-weight:500;}
+.prose ul,.prose ol{margin-left:1.2rem;margin-bottom:16px;display:flex;flex-direction:column;gap:6px;}
+.prose li{font-size:15px;}
+.prose code{
+  font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  font-size:13px;
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 5px;
+  color:var(--text);
+}
+.prose pre{
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  overflow-x:auto;
+  margin-bottom:16px;
+}
+.prose pre code{
+  background:none;border:none;padding:0;
+  font-size:13px;line-height:1.7;
+}
+.prose blockquote{
+  border-left:2px solid var(--border);
+  padding-left:16px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.prose hr{
+  border:none;border-top:1px solid var(--border);
+  margin:32px 0;
+}
+.callout{
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  margin-bottom:16px;
+  font-size:14px;
+  color:var(--muted);
+}
+.callout strong{color:var(--text);}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <a class="h-back" href="./">← 學習筆記</a>
+</header>
+
+<main>
+  <div class="note-header">
+    <div class="note-meta">
+      <span>2026-05-23</span>
+      <span class="note-tag">AWS · S3</span>
+    </div>
+    <h1 class="note-title">AWS S3 Presigned URL</h1>
+    <p class="note-summary">不開放 S3 bucket 公開讀取，仍能讓外部用戶暫時存取特定物件的機制。</p>
+  </div>
+
+  <article class="prose">
+
+      <h2>背景</h2>
+      <p>
+        參與公司「雲世代」計畫，在 AWS 上實作了一個協助行銷部門加速 EDM 產製的 GenAI 專題。
+        其中有個功能是讓使用者上傳圖檔，一開始以為寫一支上傳 API 就搞定了，沒想到卡在 S3 的權限設定。
+      </p>
+      <p>
+        第一個念頭是直接把 Bucket 設成 public —— 簡單，但這等於讓任何人都能存取裡頭的所有檔案，有明顯的資料外洩風險。
+        改用 presigned URL 之後，由後端產生一組有時效、限定目標物件的網址，使用者在不開放整個 Bucket 的情況下也能安全上傳。
+      </p>
+
+      <hr>
+
+      <h2>先備知識</h2>
+      <p>閱讀這篇前，建議先對以下 AWS 概念有基本認識：</p>
+      <ul>
+        <li><strong>S3（Simple Storage Service）</strong> — AWS 的物件儲存服務。檔案以「Bucket / Key」結構存放，Bucket 是頂層容器，Key 是物件的路徑名稱。</li>
+        <li><strong>Bucket 存取控制</strong> — S3 Bucket 預設為 private，需要明確授權才能存取其中的物件。</li>
+        <li><strong>IAM（Identity and Access Management）</strong> — AWS 的身份與權限管理服務。每個操作都必須由具備對應權限的 IAM 身份（User 或 Role）來執行。</li>
+      </ul>
+
+      <hr>
+
+      <h2>是什麼</h2>
+      <p>
+        Presigned URL 是一條帶有簽名的 S3 URL，讓<strong>沒有 AWS 憑證的人</strong>也能在有效期限內對特定物件執行指定操作（下載或上傳）。
+        簽名是由具備權限的 IAM 身份（通常是後端服務）在伺服器端產生的，有效期過後 URL 自動失效。
+      </p>
+      <div class="callout">
+        <strong>重點：</strong>Presigned URL 的權限來自「產生它的 IAM 身份」，而非呼叫者本身。
+        如果 IAM 身份的 S3 權限被撤銷，該 URL 立即失效，即使還在有效期內。
+      </div>
+
+      <h2>運作原理</h2>
+      <p>產生時，AWS SDK 會把以下資訊打包進 URL 的 query string：</p>
+      <ul>
+        <li><code>X-Amz-Credential</code> — IAM 身份與 region</li>
+        <li><code>X-Amz-Expires</code> — 有效秒數</li>
+        <li><code>X-Amz-Date</code> — 產生時間（ISO 8601）</li>
+        <li><code>X-Amz-Signature</code> — HMAC-SHA256 簽名</li>
+      </ul>
+      <p>S3 收到請求時，重新計算簽名比對，並確認是否在有效期內，兩者都通過才執行操作。</p>
+
+      <hr>
+
+      <h2>兩種用法</h2>
+
+      <h3>GET — 暫時允許下載</h3>
+      <p>最常見的場景：S3 bucket 設為 private，但需要讓用戶或前端短暫存取某個檔案。</p>
+<pre><code>import boto3
+
+s3 = boto3.client('s3', region_name='ap-northeast-1')
+
+url = s3.generate_presigned_url(
+    ClientMethod='get_object',
+    Params={
+        'Bucket': 'my-bucket',
+        'Key':    'reports/2026-05.pdf',
+    },
+    ExpiresIn=3600,  # 秒，最長 7 天（若用 STS 臨時憑證則最長受 session 限制）
+)
+
+# url 是一條帶簽名的 HTTPS URL，直接放到 &lt;a href&gt; 或 fetch() 都可以用</code></pre>
+
+      <h3>PUT — 讓前端直接上傳到 S3</h3>
+      <p>
+        不想讓檔案先經過你的伺服器再轉到 S3（流量費 + 延遲），可以讓前端拿到 PUT presigned URL 後直接上傳。
+        後端只負責產生 URL，S3 直接收到檔案。
+      </p>
+<pre><code>url = s3.generate_presigned_url(
+    ClientMethod='put_object',
+    Params={
+        'Bucket':      'my-bucket',
+        'Key':         f'uploads/{user_id}/{filename}',
+        'ContentType': 'image/jpeg',  # 要和前端上傳時的 Content-Type 一致
+    },
+    ExpiresIn=300,  # 上傳用途通常設短一點
+)
+
+# 前端用 PUT 把檔案送到這條 URL
+# fetch(url, { method: 'PUT', body: file, headers: { 'Content-Type': 'image/jpeg' } })</code></pre>
+
+      <div class="callout">
+        <strong>注意：</strong>PUT presigned URL 產生時指定了 <code>ContentType</code>，前端上傳時的 <code>Content-Type</code> header 必須完全一致，否則 S3 會回 403。
+      </div>
+
+      <hr>
+
+      <h2>安全注意事項</h2>
+      <ul>
+        <li><strong>有效期設越短越好</strong> — 下載用 1 小時內，上傳用 5–15 分鐘通常已足夠。URL 一旦外洩，任何人都能在期限內使用。</li>
+        <li><strong>Key 不要可猜測</strong> — 上傳路徑建議包含 UUID 或 user_id，避免用序號、時間戳等可推測的格式。</li>
+        <li><strong>不要在前端產生</strong> — 產生 URL 需要 AWS 憑證，永遠只能在後端做。</li>
+        <li><strong>IAM 最小權限</strong> — 產生 URL 的 IAM role 只需要 <code>s3:GetObject</code>（下載）或 <code>s3:PutObject</code>（上傳）on 特定 bucket/prefix，不需要 <code>s3:*</code>。</li>
+        <li><strong>CORS 設定</strong> — 前端直接 PUT 到 S3 時，bucket 需要設 CORS，允許對應 origin 的 PUT method。</li>
+      </ul>
+
+      <hr>
+
+      <h2>常見坑</h2>
+      <ul>
+        <li>用 STS 臨時憑證產生的 Presigned URL，有效期不能超過該 STS session 的剩餘時間（即使 <code>ExpiresIn</code> 設更長也無效）。</li>
+        <li>如果 IAM 政策走 VPC endpoint，URL 可能只在 VPC 內有效，外部存取會收到 403。</li>
+        <li>Bucket 如果開了 <code>require MFA delete</code> 或 Object Lock，Presigned URL 無法用來刪除物件。</li>
+      </ul>
+
+  </article>
+</main>
+
+</div>
+
+</body>
+</html>

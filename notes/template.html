@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>筆記標題 — ChihChi Kuo</title>
+<meta name="description" content="筆記摘要一句話。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #fdfdfc;
+  --bg-hover: #F5F4F4;
+  --text:     #21201c;
+  --muted:    #63635e;
+  --border:   #e9e9e7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #111110;
+    --bg-hover: #191918;
+    --text:     #eeeeec;
+    --muted:    #9d9d99;
+    --border:   #2a2a28;
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:692px;
+  margin:0 auto;
+  padding:48px 24px 96px;
+}
+@media(min-width:640px){
+  .container{padding:128px 24px;}
+}
+
+header{
+  margin-bottom:80px;
+}
+@media(min-width:640px){header{margin-bottom:128px;}}
+
+.h-back{
+  font-size:15px;color:var(--muted);text-decoration:none;
+  transition:color 0.12s;
+}
+.h-back:hover{color:var(--text);}
+
+.note-header{margin-bottom:48px;}
+.note-meta{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  margin-bottom:8px;
+}
+.note-tag{
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 7px;
+  font-size:12px;color:var(--muted);
+}
+.note-title{
+  font-size:22px;font-weight:500;
+  color:var(--text);line-height:1.35;
+  margin-bottom:8px;
+}
+.note-summary{font-size:15px;color:var(--muted);line-height:1.7;}
+
+.prose{color:var(--muted);font-size:15px;line-height:1.8;}
+.prose h2{
+  font-size:15px;font-weight:500;
+  color:var(--text);
+  margin-top:40px;margin-bottom:12px;
+}
+.prose h3{
+  font-size:13px;font-weight:500;
+  color:var(--text);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-top:28px;margin-bottom:8px;
+}
+.prose p{margin-bottom:16px;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text);font-weight:500;}
+.prose ul,.prose ol{margin-left:1.2rem;margin-bottom:16px;display:flex;flex-direction:column;gap:6px;}
+.prose li{font-size:15px;}
+.prose code{
+  font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  font-size:13px;
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 5px;
+  color:var(--text);
+}
+.prose pre{
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  overflow-x:auto;
+  margin-bottom:16px;
+}
+.prose pre code{
+  background:none;border:none;padding:0;
+  font-size:13px;line-height:1.7;
+}
+.prose blockquote{
+  border-left:2px solid var(--border);
+  padding-left:16px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.prose hr{
+  border:none;border-top:1px solid var(--border);
+  margin:32px 0;
+}
+.callout{
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  margin-bottom:16px;
+  font-size:14px;
+  color:var(--muted);
+}
+.callout strong{color:var(--text);}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <a class="h-back" href="./">← 學習筆記</a>
+</header>
+
+<main>
+  <div class="note-header">
+    <div class="note-meta">
+      <span>YYYY-MM</span>
+      <span class="note-tag">Tag</span>
+    </div>
+    <h1 class="note-title">筆記標題</h1>
+    <p class="note-summary">一句話摘要。</p>
+  </div>
+
+  <article class="prose">
+
+    <h2>章節一</h2>
+    <p>內容...</p>
+
+    <h2>章節二</h2>
+    <p>內容...</p>
+
+  </article>
+</main>
+
+</div>
+</body>
+</html>

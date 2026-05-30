@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>學習筆記 — ChihChi Kuo</title>
+<meta name="description" content="LLM、AI 系統與工程相關學習記錄。">
+<link rel="canonical" href="https://www.chihchi.dev/notes/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #fdfdfc;
+  --bg-hover: #F5F4F4;
+  --text:     #21201c;
+  --muted:    #63635e;
+  --border:   #e9e9e7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #111110;
+    --bg-hover: #191918;
+    --text:     #eeeeec;
+    --muted:    #9d9d99;
+    --border:   #2a2a28;
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:692px;
+  margin:0 auto;
+  padding:48px 24px 96px;
+}
+@media(min-width:640px){
+  .container{padding:128px 24px;}
+}
+
+header{
+  margin-bottom:80px;
+}
+@media(min-width:640px){header{margin-bottom:128px;}}
+
+.h-back{
+  font-size:15px;color:var(--muted);text-decoration:none;
+  transition:color 0.12s;
+}
+.h-back:hover{color:var(--text);}
+
+.sec-label{
+  display:block;font-size:15px;font-weight:500;
+  margin-bottom:4px;line-height:normal;
+}
+.sec-sub{
+  font-size:15px;color:var(--muted);
+  margin-bottom:36px;
+}
+@media(min-width:640px){.sec-sub{margin-bottom:48px;}}
+
+.note-list{display:flex;flex-direction:column;}
+
+.note-item{
+  display:flex;flex-direction:column;
+  margin:0 -12px;padding:0 12px;
+  border-radius:6px;
+  text-decoration:none;color:var(--text);
+  transition:background 0.12s;
+}
+@media(min-width:640px){.note-item{padding:12px;}}
+.note-item:hover{background:var(--bg-hover);}
+
+.note-meta{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  margin-bottom:2px;
+}
+.note-tag{
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 7px;
+  font-size:12px;
+  color:var(--muted);
+}
+.note-title{font-size:15px;color:var(--text);}
+.note-desc{font-size:15px;color:var(--muted);margin-top:1px;}
+
+.note-divider{
+  height:1px;background:var(--border);
+  margin:0;
+}
+@media(min-width:640px){.note-divider{margin:0 12px;}}
+
+.empty-state{
+  font-size:15px;color:var(--muted);
+  padding:12px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <a class="h-back" href="../">← ChihChi Kuo</a>
+</header>
+
+<main>
+  <h1 class="sec-label">學習筆記</h1>
+  <p class="sec-sub">LLM、AI 系統與工程相關學習記錄。</p>
+
+  <div class="note-list" id="note-list"></div>
+</main>
+
+</div>
+
+<script>
+const notes = [
+  {
+    slug: 'aws-presigned-url',
+    date: '2026-05-23',
+    tag: 'AWS · S3',
+    title: 'AWS S3 Presigned URL',
+    desc: '不開放 bucket 公開讀取，仍能讓外部暫時存取特定物件。涵蓋 GET 下載、PUT 上傳用法與安全注意事項。'
+  },
+];
+
+function renderNotes() {
+  const list = document.getElementById('note-list');
+  if (notes.length === 0) {
+    list.innerHTML = '<p class="empty-state">筆記準備中。</p>';
+    return;
+  }
+  list.innerHTML = notes.map((n, i) => `
+    ${i > 0 ? '<div class="note-divider"></div>' : ''}
+    <a class="note-item" href="${n.slug}.html">
+      <div class="note-meta">
+        <span>${n.date}</span>
+        <span class="note-tag">${n.tag}</span>
+      </div>
+      <span class="note-title">${n.title}</span>
+      <span class="note-desc">${n.desc}</span>
+    </a>
+  `).join('');
+}
+
+renderNotes();
+</script>
+</body>
+</html>

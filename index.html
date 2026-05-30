@@ -401,6 +401,17 @@ footer a:hover{color:var(--text);}
   </div>
 </section>
 
+<!-- NOTES -->
+<section id="notes">
+  <h2 class="sec-label" data-i18n="sec-notes">Notes</h2>
+  <div class="item-list">
+    <a class="item" href="notes/">
+      <span class="item-title" data-i18n="notes-link-title">Learning Notes →</span>
+      <span class="item-desc"  data-i18n="notes-link-desc">LLM, AI systems, and engineering.</span>
+    </a>
+  </div>
+</section>
+
 <!-- PUBLICATIONS -->
 <section id="publications">
   <h2 class="sec-label" data-i18n="sec-pub">Publications</h2>
@@ -505,6 +516,9 @@ const T = {
     'demo-sub':    'OpenAI Realtime API · inbound premium-service call scenario',
     'demo-cap-1':  'Architecture overview',
     'demo-cap-2':  'Refactor result',
+    'sec-notes':        'Notes',
+    'notes-link-title': 'Learning Notes →',
+    'notes-link-desc':  'LLM, AI systems, and engineering.',
     'sec-pub':     'Publications',
     'sec-more':    'More',
     'contact-bio': 'Reach me at <a href="mailto:gingoooo.tw@gmail.com">gingoooo.tw@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" rel="noopener noreferrer">LinkedIn</a>. Open to onsite, hybrid, and remote opportunities.',
@@ -549,6 +563,9 @@ const T = {
     'demo-sub':    'OpenAI Realtime API · 保費服務來電場景',
     'demo-cap-1':  '架構總覽',
     'demo-cap-2':  '重構成果',
+    'sec-notes':        '學習筆記',
+    'notes-link-title': '學習筆記 →',
+    'notes-link-desc':  'LLM、AI 系統與工程相關學習記錄。',
     'sec-pub':     '學術論文',
     'sec-more':    '聯絡',
     'contact-bio': '歡迎透過 <a href="mailto:gingoooo.tw@gmail.com">gingoooo.tw@gmail.com</a> 聯絡我，或在 <a href="https://www.linkedin.com/in/chihchi-kuo-1111491b2" target="_blank" rel="noopener noreferrer">LinkedIn</a> 上連結。接受現場、混合與遠端工作機會。',
@@ -744,11 +761,45 @@ const PROJECTS = [
     title: { en: 'OCR Key Information Extraction', zh: 'OCR 關鍵資訊擷取' },
     tag: 'CV',
     overview: {
-      en: 'Built and improved OCR models for key information extraction in business operations, raising online model accuracy from 81% to 93%.',
-      zh: '建立並改善商業文件關鍵資訊擷取的 OCR 模型，將線上模型正確率從 81% 提升至 93%。'
+      en: 'Each day, policyholders submit diagnosis certificate images to the system for claims processing — a flow that previously required staff to manually key in every field. The goal was to use OCR to extract the required information directly from the images and eliminate the manual data entry step.',
+      zh: '公司系統每日會收到保戶送件到系統的診斷書圖檔做請款，需要花費人力將診斷書上的資訊以人工登打方式 Key-in 至系統，透過 OCR 技術將圖檔萃取出所需文字，從而減少人工文件的作業處理時間。'
     },
-    approach: null,
-    metrics: [{ v: '93%', l: { en: 'model accuracy (↑ from 81%)', zh: '模型正確率（↑ 從 81%）' } }],
+    approach: {
+      en: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Core Challenges</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">Accuracy gap with multiple root causes</strong> — The inherited deep learning model was stuck at 82%, below the 85% production threshold. The gap traced to four distinct sources: limited dictionary coverage, image quality, incorrect ground-truth labels, and red-stamp interference on text.</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">Rare name characters structurally unpredictable</strong> — Rare name characters couldn't be recognized correctly, but the root cause wasn't insufficient training data — it was a dictionary design constraint. The model can only output characters in its dictionary, which covered just 8,420 characters, making any out-of-dictionary name character structurally impossible to predict.</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">Processing speed incompatible with daily volume</strong> — At 60 seconds per document, the current pipeline couldn't keep up with the incoming claims load.</div>
+</div>
+<div>
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">Key Design Decisions</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;font-size:14px;color:var(--muted);">
+    <li><strong style="color:var(--text);font-weight:500">Fixed test dataset to gate every change</strong> — Established a stable holdout set upfront so each adjustment was trackable and regressions visible, rather than tuning against a moving target.</li>
+    <li><strong style="color:var(--text);font-weight:500">Dictionary substitution instead of retraining</strong> — Swapped low-frequency characters in the dictionary for the missing rare ones, deliberately selecting visually similar glyphs to minimize disruption to the existing trained weights.</li>
+    <li><strong style="color:var(--text);font-weight:500">Field complementing for red-stamp-affected fields</strong> — Where red-stamp removal had limited effect, derived the answer from adjacent fields instead: gender inferred from the ID number, hospital name derived from the address.</li>
+    <li><strong style="color:var(--text);font-weight:500">GPU inference + batch pipeline trim</strong> — Switched to GPU and moved orientation-detection and re-queuing steps out of the batch flow — ~20× speed improvement, cutting per-document time from 60 seconds to 3 seconds.</li>
+  </ul>
+</div>`,
+      zh: `<div style="margin-bottom:1.1rem">
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">核心挑戰</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">01</span><strong style="color:var(--text);font-weight:500">準確度落差來自多個根因</strong> — 接手的深度學習模型卡在 82%，低於 85% 的上線標準，落差追溯至四個不同根因：模型字典檔涵蓋範圍不足、影像品質不佳、正解有誤、文字上的紅印干擾。</div>
+  <div style="margin-bottom:.6rem;font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">02</span><strong style="color:var(--text);font-weight:500">罕見姓名字在結構上不可預測</strong> — 罕見姓名用字無法被正確辨識，核心原因並非訓練資料不足，而是字典設計限制。現行模型只能輸出字典內的字，但字典僅支援 8,420 個字，因此字典外的罕見姓名用字在結構上無法被預測。</div>
+  <div style="font-size:14px;color:var(--muted);"><span style="color:var(--text);margin-right:.5rem;font-size:11px">03</span><strong style="color:var(--text);font-weight:500">處理速度無法支撐每日進件量</strong> — 每張文件需要 60 秒，現行流程完全跟不上進件速度。</div>
+</div>
+<div>
+  <div style="color:var(--text);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">關鍵設計決策</div>
+  <ul style="margin-left:1rem;display:flex;flex-direction:column;gap:.5rem;font-size:14px;color:var(--muted);">
+    <li><strong style="color:var(--text);font-weight:500">以固定測試資料集把關每次改動</strong> — 事先建立穩定的測試集，讓每一項調整都可追蹤、退步可見，而非對著移動的靶子調參。</li>
+    <li><strong style="color:var(--text);font-weight:500">字典替換而非重新訓練</strong> — 把字典裡的低頻字替換成缺漏的罕見字，刻意挑視覺上相似的字形，把對既有訓練權重的擾動降到最低。</li>
+    <li><strong style="color:var(--text);font-weight:500">欄位互補補足去紅印效果有限的欄位</strong> — 在去紅印效果受限的欄位，改從相鄰欄位推導答案：用身分證字號推得性別，用地址補上醫院名稱。</li>
+    <li><strong style="color:var(--text);font-weight:500">GPU 推論 + 批次程式瘦身</strong> — 切換 GPU 推論，並把判斷方向、重打步驟移出批次程式——速度提升約 20 倍，每張處理時間從 60 秒降到 3 秒。</li>
+  </ul>
+</div>`
+    },
+    metrics: [
+      { v: '93%', l: { en: 'model accuracy (↑ from 81%)', zh: '模型正確率（↑ 從 81%）' } }, 
+      { v: '25%', l: { en: 'of total claim volume covered', zh: '醫院涵蓋率佔總量的 25%' } }
+    ],
     stack: ['OCR', 'Computer Vision', 'Model Optimization', 'PaddleOCR'],
     links: [{ label: { en: '→ LinkedIn', zh: '→ LinkedIn' }, href: 'https://www.linkedin.com/in/chihchi-kuo-1111491b2' }]
   },
