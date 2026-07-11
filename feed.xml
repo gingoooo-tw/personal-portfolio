@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ChihChi Kuo — 學習筆記</title>
+    <link>https://www.chihchi.dev/notes/</link>
+    <description>LLM、AI 系統與工程相關學習記錄。</description>
+    <language>zh-TW</language>
+    <lastBuildDate>Sat, 20 Jun 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://www.chihchi.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>個人寫作課：會說就能寫</title>
+      <link>https://www.chihchi.dev/notes/personal-writing-course.html</link>
+      <guid>https://www.chihchi.dev/notes/personal-writing-course.html</guid>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 +0800</pubDate>
+      <description>記敘、描寫、抒情、議論四種基本文體的核心技巧與可練習的步驟。Hahow 課程筆記。</description>
+    </item>
+    <item>
+      <title>AWS S3 Presigned URL</title>
+      <link>https://www.chihchi.dev/notes/aws-presigned-url.html</link>
+      <guid>https://www.chihchi.dev/notes/aws-presigned-url.html</guid>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0800</pubDate>
+      <description>不開放 bucket 公開讀取，仍能讓外部暫時存取特定物件。涵蓋 GET 下載、PUT 上傳用法與安全注意事項。</description>
+    </item>
+  </channel>
+</rss>

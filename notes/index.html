@@ -7,6 +7,14 @@
 <title>學習筆記 — ChihChi Kuo</title>
 <meta name="description" content="LLM、AI 系統與工程相關學習記錄。">
 <link rel="canonical" href="https://www.chihchi.dev/notes/">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://www.chihchi.dev/notes/">
+<meta property="og:title"       content="學習筆記 — ChihChi Kuo">
+<meta property="og:description" content="LLM、AI 系統與工程相關學習記錄。">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="學習筆記 — ChihChi Kuo">
+<meta name="twitter:description" content="LLM、AI 系統與工程相關學習記錄。">
+<link rel="alternate" type="application/rss+xml" title="ChihChi Kuo — 學習筆記" href="https://www.chihchi.dev/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -121,49 +129,32 @@ header{
   <h1 class="sec-label">學習筆記</h1>
   <p class="sec-sub">LLM、AI 系統與工程相關學習記錄。</p>
 
-  <div class="note-list" id="note-list"></div>
+  <!--
+    新增筆記：複製一個 .note-item 區塊貼到列表最上方（新到舊排序），
+    區塊之間以 .note-divider 分隔。
+    同步更新：/sitemap.xml 與 /feed.xml。
+  -->
+  <div class="note-list">
+    <a class="note-item" href="personal-writing-course.html">
+      <div class="note-meta">
+        <span>2026-06-20</span>
+        <span class="note-tag">寫作 · 課程筆記</span>
+      </div>
+      <span class="note-title">個人寫作課：會說就能寫</span>
+      <span class="note-desc">記敘、描寫、抒情、議論四種基本文體的核心技巧與可練習的步驟。Hahow 課程筆記。</span>
+    </a>
+    <div class="note-divider"></div>
+    <a class="note-item" href="aws-presigned-url.html">
+      <div class="note-meta">
+        <span>2026-05-23</span>
+        <span class="note-tag">AWS · S3</span>
+      </div>
+      <span class="note-title">AWS S3 Presigned URL</span>
+      <span class="note-desc">不開放 bucket 公開讀取，仍能讓外部暫時存取特定物件。涵蓋 GET 下載、PUT 上傳用法與安全注意事項。</span>
+    </a>
+  </div>
 </main>
 
 </div>
-
-<script>
-const notes = [
-  {
-    slug: 'personal-writing-course',
-    date: '2026-06-20',
-    tag: '寫作 · 課程筆記',
-    title: '個人寫作課：會說就能寫',
-    desc: '記敘、描寫、抒情、議論四種基本文體的核心技巧與可練習的步驟。Hahow 課程筆記。'
-  },
-  {
-    slug: 'aws-presigned-url',
-    date: '2026-05-23',
-    tag: 'AWS · S3',
-    title: 'AWS S3 Presigned URL',
-    desc: '不開放 bucket 公開讀取，仍能讓外部暫時存取特定物件。涵蓋 GET 下載、PUT 上傳用法與安全注意事項。'
-  },
-];
-
-function renderNotes() {
-  const list = document.getElementById('note-list');
-  if (notes.length === 0) {
-    list.innerHTML = '<p class="empty-state">筆記準備中。</p>';
-    return;
-  }
-  list.innerHTML = notes.map((n, i) => `
-    ${i > 0 ? '<div class="note-divider"></div>' : ''}
-    <a class="note-item" href="${n.slug}.html">
-      <div class="note-meta">
-        <span>${n.date}</span>
-        <span class="note-tag">${n.tag}</span>
-      </div>
-      <span class="note-title">${n.title}</span>
-      <span class="note-desc">${n.desc}</span>
-    </a>
-  `).join('');
-}
-
-renderNotes();
-</script>
 </body>
 </html>
