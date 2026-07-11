@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>個人寫作課：會說就能寫 — ChihChi Kuo</title>
+<meta name="description" content="Hahow 個人寫作課筆記：記敘、描寫、抒情、議論四種基本文體的核心技巧與步驟。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:       #fdfdfc;
+  --bg-hover: #F5F4F4;
+  --text:     #21201c;
+  --muted:    #63635e;
+  --border:   #e9e9e7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #111110;
+    --bg-hover: #191918;
+    --text:     #eeeeec;
+    --muted:    #9d9d99;
+    --border:   #2a2a28;
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+  max-width:692px;
+  margin:0 auto;
+  padding:48px 24px 96px;
+}
+@media(min-width:640px){
+  .container{padding:128px 24px;}
+}
+
+header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:80px;
+}
+@media(min-width:640px){header{margin-bottom:128px;}}
+
+.h-back{
+  font-size:15px;color:var(--muted);text-decoration:none;
+  transition:color 0.12s;
+}
+.h-back:hover{color:var(--text);}
+
+.note-header{margin-bottom:48px;}
+.note-meta{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  margin-bottom:8px;
+}
+.note-tag{
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 7px;
+  font-size:12px;color:var(--muted);
+}
+.note-title{
+  font-size:22px;font-weight:500;
+  color:var(--text);line-height:1.35;
+  margin-bottom:8px;
+}
+.note-summary{font-size:15px;color:var(--muted);line-height:1.7;}
+
+.prose{color:var(--muted);font-size:15px;line-height:1.8;}
+.prose h2{
+  font-size:15px;font-weight:500;
+  color:var(--text);
+  margin-top:40px;margin-bottom:12px;
+}
+.prose h3{
+  font-size:13px;font-weight:500;
+  color:var(--text);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-top:28px;margin-bottom:8px;
+}
+.prose p{margin-bottom:16px;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--text);font-weight:500;}
+.prose a{color:var(--text);text-decoration:underline;text-underline-offset:2px;}
+.prose ul,.prose ol{margin-left:1.2rem;margin-bottom:16px;display:flex;flex-direction:column;gap:6px;}
+.prose li{font-size:15px;}
+.prose code{
+  font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  font-size:13px;
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 5px;
+  color:var(--text);
+}
+.prose pre{
+  background:var(--bg-hover);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  overflow-x:auto;
+  margin-bottom:16px;
+}
+.prose pre code{
+  background:none;border:none;padding:0;
+  font-size:13px;line-height:1.7;
+}
+.prose blockquote{
+  border-left:2px solid var(--border);
+  padding-left:16px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.prose hr{
+  border:none;border-top:1px solid var(--border);
+  margin:32px 0;
+}
+.prose table{
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:16px;
+  font-size:14px;
+}
+.prose th,.prose td{
+  border:1px solid var(--border);
+  padding:8px 12px;
+  text-align:left;
+  vertical-align:top;
+}
+.prose th{color:var(--text);font-weight:500;}
+.callout{
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  margin-bottom:16px;
+  font-size:14px;
+  color:var(--muted);
+}
+.callout strong{color:var(--text);}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <a class="h-back" href="./">← 學習筆記</a>
+</header>
+
+<main>
+  <div class="note-header">
+    <div class="note-meta">
+      <span>2026-06-20</span>
+      <span class="note-tag">寫作 · 課程筆記</span>
+    </div>
+    <h1 class="note-title">個人寫作課：會說就能寫，三種思維提升寫作力</h1>
+    <p class="note-summary">記敘、描寫、抒情、議論 —— 四種基本文體的核心技巧與可練習的步驟。</p>
+  </div>
+
+  <article class="prose">
+
+      <p>
+        我發現一件很諷刺的事：我可以把一個 bug 的 root cause 講得清清楚楚，
+        卻沒辦法把上週末一件超好笑的事講得好笑。
+      </p>
+      <p>
+        明明是有趣的事，從我嘴裡出來就變成流水帳 —— 先發生 A，然後 B，最後 C。
+        清楚是清楚，但朋友的表情透露出：無聊。
+      </p>
+      <p>
+        後來上了這堂 <a href="https://hahow.in/courses/61615aa25e3f7800079724ad?mts_s=google-ads&mts_m=dynamic-search&mts_c=pfg_normal&mts_t=gad&mts_s=google-ads&mts_m=dynamic-search&mts_c=pfg_normal&mts_t=gad&gad_source=1&gad_campaignid=19968936887&gbraid=0AAAAAonHTKUAuDNNLXii9upVHwIml8aNS&gclid=CjwKCAjw08fSBhA7EiwAfbQTsJ9lshcvsqUfP0nrrawYH4DS9KZShIUNvryVwcyR_LEosFhgFoW6nhoCIVIQAvD_BwE&rc=1" target="_blank" rel="noopener">線上課程</a> 才知道，問題不在素材，在講法。
+        課程把寫作拆成四種基本文體 —— 記敘、描寫、抒情、議論 —— 每一種都有具體的步驟可以練。
+        這篇筆記整理我覺得最實用的部分。
+      </p>
+
+      <hr>
+
+      <h2>一、記敘：把一件事說得有趣</h2>
+      <p>記敘就是「講一件事」，是最基本的技巧，卻最容易講得無聊 —— 日常分享的流水帳就是標準案例。</p>
+      <p>
+        順序其實只有兩種：<strong>正敘</strong>照時間講；<strong>倒敘</strong>從中間最有張力的一點切入，再回頭補全貌。
+      </p>
+
+      <h3>講得無聊，通常是兩個原因</h3>
+      <p>
+        <strong>第一，比例太平均。</strong>每個段落的篇幅都差不多，重點被稀釋，聽起來就是流水帳。
+        解法很直接：放大重點，其他的一句帶過。
+      </p>
+      <p>
+        <strong>第二，素材照原樣講本來就不有趣。</strong>這時候換倒敘：把最有張力的地方搬到開頭，先抓住讀者，細節之後再補。（用在聊天也一樣好用。）
+      </p>
+
+      <h3>步驟</h3>
+      <ol>
+        <li>先把素材照時間順序攤開</li>
+        <li>找出共鳴點：衝突、差異、挑戰</li>
+        <li>放大共鳴點的篇幅，壓縮其他部分</li>
+        <li>需要更強的開場時，把共鳴點往前挪（倒敘）</li>
+      </ol>
+
+      <hr>
+
+      <h2>二、描寫：寫出畫面感</h2>
+      <p>事情說得有趣之後，下一步是讓讀者「看見」。描寫有三個步驟：<strong>焦段 → 視角 → 畫面</strong>。</p>
+
+      <h3>1. 焦段</h3>
+      <p>像操作相機鏡頭，先決定離主題多遠：</p>
+      <ul>
+        <li><strong>廣角</strong>：大背景——場景、地點、時間</li>
+        <li><strong>標準</strong>：人物之間的關係與互動、空間裡東西的位置</li>
+        <li><strong>長焦</strong>：特寫——表情、內心的聲音與情緒</li>
+      </ul>
+
+      <h3>2. 視角</h3>
+      <p>決定這個畫面是從誰的眼睛看出去：</p>
+      <ul>
+        <li><strong>第一人稱</strong>：以「我」出發，讀者容易代入。</li>
+        <li><strong>第三人稱</strong>：旁觀、客觀，不困在單一角色的視野裡——俗稱「上帝視角」。</li>
+      </ul>
+      <p>視角也不限於人，東西也可以有視角（擬人）。</p>
+
+      <h3>3. 畫面</h3>
+      <p>
+        訊息分兩種：<strong>形象化</strong>的，五感能直接接收；<strong>抽象化</strong>的，要在腦袋裡加工才懂。
+        畫面感靠的是前者。
+      </p>
+      <p>所以有兩個原則：</p>
+      <ul>
+        <li>多用<strong>名詞 + 動詞</strong>，少用形容詞——「他握緊拳頭」比「他很憤怒」有畫面</li>
+        <li>遇到抽象難懂的東西，找具體的東西來比喻</li>
+      </ul>
+
+      <hr>
+
+      <h2>三、抒情：在文章裡放感情</h2>
+      <p>畫面有了，再來是感情。基本情緒有六種：<strong>驚訝、厭惡、憤怒、恐懼、悲傷、喜悅</strong>。</p>
+      <p>
+        關鍵不在放哪一種，而在情緒要有<strong>波形</strong>——有起伏、有轉折。
+        從頭到尾一種情緒，讀者很難被帶動；情緒有起伏，讀者才會跟著走，並回憶起自己相似的經驗——這就是<strong>共鳴</strong>。
+      </p>
+
+      <h3>峰終效應（Peak-End Rule）</h3>
+      <p>人在一段體驗結束後，記住的只有<strong>峰值</strong>和<strong>終點</strong>的感受。套用到寫作：</p>
+      <ul>
+        <li><strong>低谷</strong>：只要不超過耐受極限，讀者不會離開；但低谷之後一定要拉上來，給轉折。</li>
+        <li><strong>峰值</strong>：做到驚豔、滿足、有勝利感。</li>
+        <li><strong>終點</strong>：留下印象——金句、啟發。</li>
+      </ul>
+
+      <div class="callout">
+        <strong>同理 ≠ 同情。</strong>抒情的目的是讓讀者「同理」你，不是「同情」你。情緒一定要真實可信，不要矯情。
+      </div>
+
+      <h3>步驟</h3>
+      <ol>
+        <li>先判斷這個主題會勾起讀者什麼情緒</li>
+        <li>用自己的經驗靠近這個情緒，建立共鳴</li>
+        <li>畫出情緒波形，檢查有沒有起伏</li>
+        <li>消除低谷、強化峰值與終點</li>
+      </ol>
+
+      <hr>
+
+      <h2>四、議論：有理有據地說服別人</h2>
+      <p>前三種文體都在「抒發自我」；寫作的另一個目的是<strong>影響別人</strong>，這就是議論。</p>
+
+      <h3>金字塔原理（芭芭拉．明托）</h3>
+      <p>先從素材提煉出一個核心觀點，再往下展開重點與細節：</p>
+<pre><code>核心觀點
+├── 重點 1
+│   ├── 論述細節 A
+│   └── 論述細節 B
+├── 重點 2
+└── 重點 3</code></pre>
+
+      <h3>重點的排序</h3>
+      <ul>
+        <li><strong>時間</strong>：事件發生的前後</li>
+        <li><strong>空間</strong>：距離遠近、相對位置，從大背景到小細節</li>
+        <li><strong>重要性</strong>：地位、佔比、數量、緊急程度</li>
+      </ul>
+      <p>展開細節時，少用情緒化的語言，讓論據自己說話——說服不是說教。</p>
+
+      <h3>步驟</h3>
+      <ol>
+        <li>檢視素材，提煉核心觀點</li>
+        <li>挑 3–7 個重點，排好順序</li>
+        <li>逐一論述</li>
+      </ol>
+
+      <hr>
+
+      <h2>總結</h2>
+      <table>
+        <thead>
+          <tr><th>文體</th><th>核心問題</th><th>關鍵技巧</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>記敘</td><td>怎麼把事說得有趣？</td><td>找共鳴點，放大篇幅、往前挪</td></tr>
+          <tr><td>描寫</td><td>怎麼寫出畫面感？</td><td>焦段 → 視角 → 名詞 + 動詞</td></tr>
+          <tr><td>抒情</td><td>怎麼放感情？</td><td>情緒波形 + 峰終效應，讓讀者同理</td></tr>
+          <tr><td>議論</td><td>怎麼說服別人？</td><td>金字塔原理：觀點 → 重點 → 細節</td></tr>
+        </tbody>
+      </table>
+      <p>回到開頭那個講不好笑的週末故事——問題出在記敘的第一課：比例太平均。下次先找到共鳴點，把它搬到開頭。</p>
+
+  </article>
+</main>
+
+</div>
+
+</body>
+</html>
